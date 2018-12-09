@@ -34,10 +34,10 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
 
         fun bind(site: SiteModel, listener : SiteListener) {
             itemView.txtSiteName.text = site.title
-            itemView.txtLat.text = site.lat as String
-            itemView.txtLng.text = site.lng as String
+            itemView.txtLat.text = site.lat.toString()
+            itemView.txtLng.text = site.lng.toString()
             itemView.chkHasBeenVisited.isChecked = site.hasBeenVisited
-            itemView.imgSite.setImageBitmap(readImageFromPath(itemView.context,  site.image))
+            itemView.imgSite.setImageBitmap(readImageFromPath(itemView.context, site.images[0]))
             itemView.setOnClickListener { listener.onSiteClick(site) }
         }
     }
