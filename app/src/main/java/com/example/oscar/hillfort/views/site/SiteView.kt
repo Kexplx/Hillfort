@@ -19,8 +19,8 @@ class SiteView: AppCompatActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site)
-        toolbarAdd.title = title
-        setSupportActionBar(toolbarAdd)
+        toolbarSite.setTitle(R.string.hillfort_title)
+        setSupportActionBar(toolbarSite)
 
         presenter = SitePresenter(this)
 
@@ -41,9 +41,9 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         txtSiteDescription.setText(site.description)
 
         siteImage0.setImageBitmap(readImageFromPath(this, site.images[0]))
-        siteImage0.setImageBitmap(readImageFromPath(this, site.images[1]))
-        siteImage0.setImageBitmap(readImageFromPath(this, site.images[2]))
-        siteImage0.setImageBitmap(readImageFromPath(this, site.images[3]))
+        siteImage1.setImageBitmap(readImageFromPath(this, site.images[1]))
+        siteImage2.setImageBitmap(readImageFromPath(this, site.images[2]))
+        siteImage3.setImageBitmap(readImageFromPath(this, site.images[3]))
 
         btnAdd.setText(R.string.save_images)
     }

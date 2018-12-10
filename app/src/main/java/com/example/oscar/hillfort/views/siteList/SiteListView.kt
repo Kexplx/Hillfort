@@ -18,8 +18,8 @@ class SiteListView : AppCompatActivity(), SiteListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
-        toolbarMain.setTitle(R.string.hillfort_title)
-        setSupportActionBar(toolbarMain)
+        toolbarList.setTitle(R.string.hillfort_title)
+        setSupportActionBar(toolbarList)
 
         presenter = SiteListPresenter(this)
         val layoutManager = LinearLayoutManager(this)
