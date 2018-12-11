@@ -83,7 +83,7 @@
         <ImageView
                 android:layout_width="80dp"
                 android:layout_height="82dp" app:srcCompat="@drawable/trees"
-                android:id="@+id/siteImage0"
+                android:id="@+id/siteImage1"
                 tools:ignore="VectorDrawableCompat"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="108dp" android:layout_marginRight="108dp"
@@ -91,7 +91,7 @@
         <ImageView
                 android:layout_width="196dp"
                 android:layout_height="208dp" app:srcCompat="@drawable/hillfort_icon"
-                android:id="@+id/siteImage2"
+                android:id="@+id/siteImage0"
                 tools:ignore="VectorDrawableCompat"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="320dp" app:layout_constraintTop_toTopOf="parent"
@@ -108,7 +108,7 @@
         <ImageView
                 android:layout_width="100dp"
                 android:layout_height="102dp" app:srcCompat="@drawable/mountains"
-                android:id="@+id/siteImage1"
+                android:id="@+id/siteImage2"
                 tools:ignore="VectorDrawableCompat"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="48dp" android:layout_marginRight="48dp"

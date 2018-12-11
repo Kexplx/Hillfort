@@ -5,7 +5,6 @@ import com.example.oscar.hillfort.helpers.showImagePicker
 import com.example.oscar.hillfort.main.MainApp
 import com.example.oscar.hillfort.models.Location
 import com.example.oscar.hillfort.models.SiteModel
-import org.jetbrains.anko.intentFor
 
 class SitePresenter (val view: SiteView) {
 
@@ -22,14 +21,16 @@ class SitePresenter (val view: SiteView) {
         if (view.intent.hasExtra("site_edit")) {
             edit = true
             site = view.intent.extras.getParcelable<SiteModel>("site_edit")
-            view.showPlacemark(site)
+            view.showSite(site)
         }
     }
 
-    fun doAddOrSave(title: String, description: String, isChecked : Boolean) {
+    fun doAddOrSave(title: String, description: String, notes : String, date : String, isChecked : Boolean) {
         site.title = title
         site.description = description
         site.hasBeenVisited = isChecked
+        site.notes = notes
+        site.dateVisited = date
         if (edit) {
             app.sites.update(site)
         } else {
@@ -64,13 +65,13 @@ class SitePresenter (val view: SiteView) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 when {
-                    site.images[0] == "" -> site.images[0]=  data.data.toString()
+                    site.images[0] == "" -> site.images[0] = data.data.toString()
                     site.images[1] == "" -> site.images[1] = data.data.toString()
                     site.images[2] == "" -> site.images[2] = data.data.toString()
-                    site.images[3] == "" -> site.images[2] = data.data.toString()
+                    site.images[3] == "" -> site.images[3] = data.data.toString()
                     else -> site.images[0] = data.data.toString()
                 }
-                view.showPlacemark(site)
+                view.updateImages(site)
             }
             LOCATION_REQUEST -> {
                 location = data.extras.getParcelable<Location>("location")

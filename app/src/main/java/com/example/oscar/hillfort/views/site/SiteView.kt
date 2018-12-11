@@ -26,9 +26,9 @@ class SiteView: AppCompatActivity(), AnkoLogger {
 
         btnAdd.setOnClickListener {
             if (txtSiteName.text.toString().isEmpty()) {
-                toast("Titel einfügen")
+                toast(getString(R.string.toast_TitelEinfügen))
             } else {
-                presenter.doAddOrSave(txtSiteName.text.toString(), txtSiteDescription.text.toString(), chkVisited.isChecked)
+                presenter.doAddOrSave(txtSiteName.text.toString(), txtSiteDescription.text.toString(),txtAdditionNotes.text.toString(),txtDateVisited.text.toString(), chkVisited.isChecked)
             }
         }
 
@@ -36,17 +36,29 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         btnAddLocation.setOnClickListener { presenter.doSetLocation() }
     }
 
-    fun showPlacemark(site: SiteModel) {
+    fun showSite(site: SiteModel) {
         txtSiteName.setText(site.title)
         txtSiteDescription.setText(site.description)
-
+        txtAdditionNotes.setText(site.notes)
+        txtDateVisited.setText(site.dateVisited)
         chkVisited.isChecked = site.hasBeenVisited
+
         siteImage0.setImageBitmap(readImageFromPath(this, site.images[0]))
         siteImage1.setImageBitmap(readImageFromPath(this, site.images[1]))
         siteImage2.setImageBitmap(readImageFromPath(this, site.images[2]))
         siteImage3.setImageBitmap(readImageFromPath(this, site.images[3]))
 
+        if(site.images[3] != "") btnAddImage.text = getString(R.string.btn_edit)
         btnAdd.setText(R.string.save_images)
+    }
+
+    fun updateImages(site : SiteModel){
+        siteImage0.setImageBitmap(readImageFromPath(this, site.images[0]))
+        siteImage1.setImageBitmap(readImageFromPath(this, site.images[1]))
+        siteImage2.setImageBitmap(readImageFromPath(this, site.images[2]))
+        siteImage3.setImageBitmap(readImageFromPath(this, site.images[3]))
+
+        if(site.images[3] != "") btnAddImage.text = getString(R.string.btn_edit)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

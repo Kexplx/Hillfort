@@ -12,6 +12,7 @@ data class SiteModel (var id: Long = 0,
                       var lat : Double = 0.0,
                       var lng: Double = 0.0,
                       var zoom: Float = 0f,
+                      var dateVisited : String = "",
                       var hasBeenVisited : Boolean = false) : Parcelable
 
 @Parcelize
