@@ -17,7 +17,7 @@ class SiteMapPresenter (var view : SiteMapsView) {
     }
 
     fun configureMap() {
-        map.uiSettings.setZoomControlsEnabled(true)
+        map.uiSettings.isZoomControlsEnabled = true
         app.sites.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.title).position(loc)
@@ -25,8 +25,8 @@ class SiteMapPresenter (var view : SiteMapsView) {
         }
 
         if (app.sites.findAll().isNotEmpty()) {
-            var lastAddedSite = app.sites.findAll().last()
-            var loc = LatLng(lastAddedSite.lat, lastAddedSite.lng)
+            val lastAddedSite = app.sites.findAll().last()
+            val loc = LatLng(lastAddedSite.lat, lastAddedSite.lng)
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, lastAddedSite.zoom))
         }
 

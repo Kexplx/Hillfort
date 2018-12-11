@@ -16,7 +16,7 @@ class SiteMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_maps)
         setSupportActionBar(toolbarMaps)
-        mapView.onCreate(savedInstanceState);
+        mapView.onCreate(savedInstanceState)
 
         presenter = SiteMapPresenter(this)
 

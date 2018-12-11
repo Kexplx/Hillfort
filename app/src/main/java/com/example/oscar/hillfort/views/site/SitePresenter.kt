@@ -19,14 +19,13 @@ class SitePresenter (val view: SiteView) {
 
     var site = SiteModel()
     var location = Location(52.245696, -7.139102, 15f)
-    var app: MainApp
-    var edit = false;
+    var app: MainApp = view.application as MainApp
+    var edit = false
 
     init {
-        app = view.application as MainApp
         if (view.intent.hasExtra("site_edit")) {
             edit = true
-            site = view.intent.extras.getParcelable<SiteModel>("site_edit")
+            site = view.intent.extras.getParcelable("site_edit")
             view.showSite(site)
         }
     }
@@ -67,7 +66,7 @@ class SitePresenter (val view: SiteView) {
         view.startActivityForResult(view.intentFor<LocationView>().putExtra("location", location), LOCATION_REQUEST)
     }
 
-    fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    fun doActivityResult(requestCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_0_REQUEST -> {
                 site.images[0] = data.data.toString(); view.updateImages(0, site.images[0])
@@ -83,7 +82,7 @@ class SitePresenter (val view: SiteView) {
             }
 
             LOCATION_REQUEST -> {
-                location = data.extras.getParcelable<Location>("location")
+                location = data.extras.getParcelable("location")
                 site.lat = location.lat
                 site.lng = location.lng
                 site.zoom = location.zoom

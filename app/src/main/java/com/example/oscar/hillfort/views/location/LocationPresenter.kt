@@ -14,13 +14,13 @@ class LocationPresenter (val activity: LocationView) {
     var location = Location()
 
     init {
-        location = activity.intent.extras.getParcelable<Location>("location")
+        location = activity.intent.extras.getParcelable("location")
     }
 
     fun initMap(map: GoogleMap) {
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
-            .title("Placemark")
+            .title("Site")
             .snippet("GPS : " + loc.toString())
             .draggable(true)
             .position(loc)
@@ -43,6 +43,6 @@ class LocationPresenter (val activity: LocationView) {
 
     fun doUpdateMarker(marker: Marker) {
         val loc = LatLng(location.lat, location.lng)
-        marker.setSnippet("GPS : " + loc.toString())
+        marker.snippet = "GPS : " + loc.toString()
     }
 }

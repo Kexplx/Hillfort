@@ -10,11 +10,7 @@ import org.jetbrains.anko.startActivityForResult
 
 class SiteListPresenter(val view: SiteListView) {
 
-    var app: MainApp
-
-    init {
-        app = view.applicationContext as MainApp
-    }
+    var app: MainApp = view.applicationContext as MainApp
 
     fun getSites() = app.sites.findAll()
 

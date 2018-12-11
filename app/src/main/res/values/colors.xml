@@ -9,4 +9,7 @@
     <color name="buttonGreen">#99DB9C</color>
     <color name="buttonPurple">#93C6E9</color>
     <color name="card">#e4e9ec</color>
+    EEE0B5
+    <color name="ratingBarUnrated">#EEE0B5</color>
+    <color name="ratingBarRated">#E9B30A</color>
 </resources>

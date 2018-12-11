@@ -10,8 +10,8 @@ import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import java.util.*
 
-val JSON_FILE = "sites.json"
-val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
+const val JSON_FILE = "sites.json"
+val gsonBuilder = GsonBuilder().setPrettyPrinting().create()!!
 val listType = object : TypeToken<java.util.ArrayList<SiteModel>>() {}.type
 
 fun generateRandomId(): Long {
