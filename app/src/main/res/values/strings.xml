@@ -11,4 +11,8 @@
     <string name="date_visited">Date visited</string>
     <string name="btn_edit">Edit</string>
     <string name="toast_TitelEinfügen">Titel einfügen</string>
+    <string name="add_site">Add Site</string>
+    <string name="set_location">Set Location</string>
+    <string name="todo">TODO</string>
+    <string name="visited">Visited</string>
 </resources>

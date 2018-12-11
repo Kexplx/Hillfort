@@ -10,7 +10,11 @@ import org.jetbrains.anko.intentFor
 
 class SitePresenter (val view: SiteView) {
 
-    val IMAGE_REQUEST = 1
+    val IMAGE_0_REQUEST = 10
+    val IMAGE_1_REQUEST = 11
+    val IMAGE_2_REQUEST = 12
+    val IMAGE_3_REQUEST = 13
+
     val LOCATION_REQUEST = 2
 
     var site = SiteModel()
@@ -27,7 +31,7 @@ class SitePresenter (val view: SiteView) {
         }
     }
 
-    fun doAddOrSave(title: String, description: String, notes : String, date : String, isChecked : Boolean) {
+    fun doAddOrSave(title: String, description: String, notes: String, date: String, isChecked: Boolean) {
         site.title = title
         site.description = description
         site.hasBeenVisited = isChecked
@@ -50,8 +54,8 @@ class SitePresenter (val view: SiteView) {
         view.finish()
     }
 
-    fun doSelectImage() {
-        showImagePicker(view, IMAGE_REQUEST)
+    fun doSelectImage(imageNumber: Int) {
+        showImagePicker(view, imageNumber)
     }
 
     fun doSetLocation() {
@@ -65,16 +69,19 @@ class SitePresenter (val view: SiteView) {
 
     fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
-            IMAGE_REQUEST -> {
-                when {
-                    site.images[0] == "" -> site.images[0] = data.data.toString()
-                    site.images[1] == "" -> site.images[1] = data.data.toString()
-                    site.images[2] == "" -> site.images[2] = data.data.toString()
-                    site.images[3] == "" -> site.images[3] = data.data.toString()
-                    else -> site.images[0] = data.data.toString()
-                }
-                view.updateImages(site)
+            IMAGE_0_REQUEST -> {
+                site.images[0] = data.data.toString(); view.updateImages(0, site.images[0])
             }
+            IMAGE_1_REQUEST -> {
+                site.images[1] = data.data.toString(); view.updateImages(1, site.images[1])
+            }
+            IMAGE_2_REQUEST -> {
+                site.images[2] = data.data.toString(); view.updateImages(2, site.images[2])
+            }
+            IMAGE_3_REQUEST -> {
+                site.images[3] = data.data.toString(); view.updateImages(3, site.images[3])
+            }
+
             LOCATION_REQUEST -> {
                 location = data.extras.getParcelable<Location>("location")
                 site.lat = location.lat

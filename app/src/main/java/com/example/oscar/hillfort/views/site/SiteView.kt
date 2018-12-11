@@ -32,7 +32,11 @@ class SiteView: AppCompatActivity(), AnkoLogger {
             }
         }
 
-        btnAddImage.setOnClickListener { presenter.doSelectImage() }
+        imgBtn0.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_0_REQUEST)}
+        imgBtn1.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_1_REQUEST)}
+        imgBtn2.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_2_REQUEST)}
+        imgBtn3.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_3_REQUEST)}
+
         btnAddLocation.setOnClickListener { presenter.doSetLocation() }
     }
 
@@ -43,22 +47,21 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         txtDateVisited.setText(site.dateVisited)
         chkVisited.isChecked = site.hasBeenVisited
 
-        siteImage0.setImageBitmap(readImageFromPath(this, site.images[0]))
-        siteImage1.setImageBitmap(readImageFromPath(this, site.images[1]))
-        siteImage2.setImageBitmap(readImageFromPath(this, site.images[2]))
-        siteImage3.setImageBitmap(readImageFromPath(this, site.images[3]))
+        imgBtn0.setImageBitmap(readImageFromPath(this, site.images[0]))
+        imgBtn1.setImageBitmap(readImageFromPath(this, site.images[1]))
+        imgBtn2.setImageBitmap(readImageFromPath(this, site.images[2]))
+        imgBtn3.setImageBitmap(readImageFromPath(this, site.images[3]))
 
-        if(site.images[3] != "") btnAddImage.text = getString(R.string.btn_edit)
         btnAdd.setText(R.string.save_images)
     }
 
-    fun updateImages(site : SiteModel){
-        siteImage0.setImageBitmap(readImageFromPath(this, site.images[0]))
-        siteImage1.setImageBitmap(readImageFromPath(this, site.images[1]))
-        siteImage2.setImageBitmap(readImageFromPath(this, site.images[2]))
-        siteImage3.setImageBitmap(readImageFromPath(this, site.images[3]))
-
-        if(site.images[3] != "") btnAddImage.text = getString(R.string.btn_edit)
+    fun updateImages(imageNumber : Int, imagePath : String){
+        when(imageNumber){
+            0 -> imgBtn0.setImageBitmap(readImageFromPath(this, imagePath))
+            1 -> imgBtn1.setImageBitmap(readImageFromPath(this, imagePath))
+            2 -> imgBtn2.setImageBitmap(readImageFromPath(this, imagePath))
+            3 -> imgBtn3.setImageBitmap(readImageFromPath(this, imagePath))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
