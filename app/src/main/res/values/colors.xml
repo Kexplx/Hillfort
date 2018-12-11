@@ -3,4 +3,9 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FFFFFF</color>
+    <color name="colorToolBarIcon">#253595</color>
+    <color name="colorToolBarText">#6971A1</color>
+    <color name="buttonRed">#D8827C</color>
+    <color name="buttonGreen">#99DB9C</color>
+    <color name="buttonPurple">#93C6E9</color>
 </resources>
