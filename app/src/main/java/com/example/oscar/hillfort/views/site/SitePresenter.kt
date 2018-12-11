@@ -5,6 +5,8 @@ import com.example.oscar.hillfort.helpers.showImagePicker
 import com.example.oscar.hillfort.main.MainApp
 import com.example.oscar.hillfort.models.Location
 import com.example.oscar.hillfort.models.SiteModel
+import com.example.oscar.hillfort.views.location.LocationView
+import org.jetbrains.anko.intentFor
 
 class SitePresenter (val view: SiteView) {
 
@@ -58,7 +60,7 @@ class SitePresenter (val view: SiteView) {
             location.lng = site.lng
             location.zoom = site.zoom
         }
-//        view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
+        view.startActivityForResult(view.intentFor<LocationView>().putExtra("location", location), LOCATION_REQUEST)
     }
 
     fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
