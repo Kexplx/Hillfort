@@ -1,6 +1,7 @@
 package com.example.oscar.hillfort.views.siteList
 
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.example.oscar.hillfort.helpers.readImageFromPath
 import com.example.oscar.hillfort.models.SiteListener
 import com.example.oscar.hillfort.models.SiteModel
 import kotlinx.android.synthetic.main.card_site.view.*
+import java.util.*
 
 class SiteAdapter constructor(private var sites: List<SiteModel>,
                               private val listener: SiteListener) : RecyclerView.Adapter<SiteAdapter.MainHolder>() {
@@ -34,11 +36,18 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
 
         fun bind(site: SiteModel, listener : SiteListener) {
             itemView.txtSiteName.text = site.title
-            itemView.txtLat.text = site.lat.toString()
-            itemView.txtLng.text = site.lng.toString()
+            itemView.txtLat.text = site.lat.toString().take(6)
+            itemView.txtLng.text = site.lng.toString().take(6)
+            itemView.dateVisited.setText(site.dateVisited)
             itemView.chkHasBeenVisited.isChecked = site.hasBeenVisited
             itemView.imgSite.setImageBitmap(readImageFromPath(itemView.context, site.images[0]))
             itemView.setOnClickListener { listener.onSiteClick(site) }
+
+            if(site.hasBeenVisited){
+                itemView.dateVisited.visibility = View.VISIBLE
+            }else{
+                itemView.dateVisited.visibility = View.INVISIBLE
+            }
         }
     }
 }

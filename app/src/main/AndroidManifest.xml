@@ -9,9 +9,10 @@
             android:label="@string/app_name"
             android:roundIcon="@drawable/hillfort_icon"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" android:fullBackupContent="">
+            android:theme="@style/AppTheme">
         <activity android:name=".views.site.SiteView"></activity>
         <activity android:name=".views.location.LocationView"></activity>
+        <activity android:name=".views.map.SiteMapsView"></activity>
         <activity android:name=".views.siteList.SiteListView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

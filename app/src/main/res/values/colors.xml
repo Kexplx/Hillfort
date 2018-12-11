@@ -8,4 +8,5 @@
     <color name="buttonRed">#D8827C</color>
     <color name="buttonGreen">#99DB9C</color>
     <color name="buttonPurple">#93C6E9</color>
+    <color name="card">#e4e9ec</color>
 </resources>

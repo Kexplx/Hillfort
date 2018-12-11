@@ -18,7 +18,6 @@ class SiteListView : AppCompatActivity(), SiteListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
-        toolbarList.setTitle(R.string.hillfort_title)
         setSupportActionBar(toolbarList)
 
         presenter = SiteListPresenter(this)
@@ -36,7 +35,7 @@ class SiteListView : AppCompatActivity(), SiteListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> presenter.doAddSite()
-//            R.id.item_map -> presenter.doShowPlacemarksMap()
+            R.id.item_map -> presenter.doShowSitesMap()
         }
         return super.onOptionsItemSelected(item)
     }

@@ -19,7 +19,6 @@ class SiteView: AppCompatActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site)
-        toolbarSite.setTitle(R.string.hillfort_title)
         setSupportActionBar(toolbarSite)
 
         presenter = SitePresenter(this)
@@ -29,6 +28,15 @@ class SiteView: AppCompatActivity(), AnkoLogger {
                 toast(getString(R.string.toast_TitelEinfügen))
             } else {
                 presenter.doAddOrSave(txtSiteName.text.toString(), txtSiteDescription.text.toString(),txtAdditionNotes.text.toString(),txtDateVisited.text.toString(), chkVisited.isChecked)
+            }
+        }
+
+        chkVisited.setOnClickListener{
+            if(chkVisited.isChecked){
+                txtDateVisited.isEnabled = true}
+            else{
+                txtDateVisited.text = null
+                txtDateVisited.isEnabled = false
             }
         }
 
@@ -47,10 +55,18 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         txtDateVisited.setText(site.dateVisited)
         chkVisited.isChecked = site.hasBeenVisited
 
-        imgBtn0.setImageBitmap(readImageFromPath(this, site.images[0]))
-        imgBtn1.setImageBitmap(readImageFromPath(this, site.images[1]))
-        imgBtn2.setImageBitmap(readImageFromPath(this, site.images[2]))
-        imgBtn3.setImageBitmap(readImageFromPath(this, site.images[3]))
+        if(site.images[0] != ""){
+            imgBtn0.setImageBitmap(readImageFromPath(this, site.images[0]))
+        }
+        if(site.images[1] != ""){
+            imgBtn1.setImageBitmap(readImageFromPath(this, site.images[1]))
+        }
+        if(site.images[2] != ""){
+            imgBtn2.setImageBitmap(readImageFromPath(this, site.images[2]))
+        }
+        if(site.images[3] != ""){
+            imgBtn3.setImageBitmap(readImageFromPath(this, site.images[3]))
+        }
 
         btnAdd.setText(R.string.save_images)
     }
