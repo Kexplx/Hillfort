@@ -3,58 +3,87 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:layout_marginBottom="8dp"
         android:elevation="24dp">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
+        <TextView
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_alignBottom="@+id/imgSite"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/txtLat" android:layout_alignStart="@+id/txtSiteName" tools:ignore="RtlCompat"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                android:layout_marginLeft="4dp" android:layout_marginStart="4dp" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+                android:text="Lat:"
+                android:layout_width="28dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="21dp" android:layout_alignBottom="@+id/imgSite"
+                android:id="@+id/textView10" android:layout_alignStart="@+id/txtSiteName"
+                tools:ignore="RtlCompat"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/txtSiteName"
+                android:layout_marginStart="8dp" android:layout_marginLeft="8dp"/>
         <TextView
                 android:id="@+id/txtSiteName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hello World"
                 android:textColor="@color/colorPrimary"
-                android:layout_alignParentTop="true"
-                android:textSize="30sp"/>
-
+                android:textSize="30sp" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+        <TextView
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_alignBottom="@+id/imgSite"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/txtLng" android:layout_alignStart="@+id/txtSiteName" tools:ignore="RtlCompat"
+                app:layout_constraintStart_toEndOf="@+id/textView2" android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp" android:layout_marginTop="40dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+                android:text="Lng:"
+                android:layout_width="28dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_height="22dp" android:layout_alignBottom="@+id/imgSite"
+                android:id="@+id/textView2" android:layout_alignStart="@+id/txtSiteName"
+                tools:ignore="RtlCompat"
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/txtSiteName"
+                android:layout_marginStart="8dp" android:layout_marginLeft="8dp"/>
         <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp" app:srcCompat="@mipmap/ic_launcher"
-                android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
-                android:id="@+id/imgSite" android:layout_marginRight="18dp"
-                android:layout_centerVertical="true" android:layout_marginEnd="18dp"/>
-        <TextView
-                android:text="801.12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_alignBottom="@+id/imgSite"
-                android:textColor="@color/colorPrimary"
-                android:id="@+id/txtLat" android:layout_alignStart="@+id/txtSiteName" tools:ignore="RtlCompat"
-                android:layout_marginStart="0dp" android:layout_marginBottom="0dp"/>
-        <TextView
-                android:text="802.12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_alignBottom="@+id/imgSite"
-                android:id="@+id/txtLng" android:layout_alignStart="@+id/txtSiteName"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginStart="78dp" android:layout_marginBottom="-1dp" tools:ignore="RtlCompat"/>
-        <TextView
-                android:text="/"
-                android:layout_width="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content" android:layout_alignBottom="@+id/imgSite"
-                android:id="@+id/textView10" android:layout_alignStart="@+id/txtSiteName"
-                android:layout_marginStart="58dp" android:layout_marginBottom="-1dp" tools:ignore="RtlCompat"/>
+                android:layout_width="88dp"
+                android:layout_height="91dp" app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/imgSite"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/txtSiteName"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
         <CheckBox
                 android:text="Visited"
                 android:layout_width="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:layout_height="wrap_content" android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtSiteName" android:layout_alignParentEnd="true"
-                android:layout_marginEnd="154dp" android:id="@+id/chkHasBeenVisited" android:layout_marginRight="154dp"
-                android:layout_marginTop="-2dp"/>
+                android:layout_height="30dp"
+                android:id="@+id/chkHasBeenVisited"
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/txtSiteName"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp" android:layout_marginTop="7dp"
+                app:layout_constraintTop_toBottomOf="@+id/txtSiteName"/>
+    </android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
     </RelativeLayout>
 </android.support.v7.widget.CardView>

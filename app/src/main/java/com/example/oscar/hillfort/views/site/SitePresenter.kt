@@ -26,9 +26,10 @@ class SitePresenter (val view: SiteView) {
         }
     }
 
-    fun doAddOrSave(title: String, description: String) {
+    fun doAddOrSave(title: String, description: String, isChecked : Boolean) {
         site.title = title
         site.description = description
+        site.hasBeenVisited = isChecked
         if (edit) {
             app.sites.update(site)
         } else {

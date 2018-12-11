@@ -28,7 +28,7 @@ class SiteView: AppCompatActivity(), AnkoLogger {
             if (txtSiteName.text.toString().isEmpty()) {
                 toast("Titel einfügen")
             } else {
-                presenter.doAddOrSave(txtSiteName.text.toString(), txtSiteDescription.text.toString())
+                presenter.doAddOrSave(txtSiteName.text.toString(), txtSiteDescription.text.toString(), chkVisited.isChecked)
             }
         }
 
@@ -40,6 +40,7 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         txtSiteName.setText(site.title)
         txtSiteDescription.setText(site.description)
 
+        chkVisited.isChecked = site.hasBeenVisited
         siteImage0.setImageBitmap(readImageFromPath(this, site.images[0]))
         siteImage1.setImageBitmap(readImageFromPath(this, site.images[1]))
         siteImage2.setImageBitmap(readImageFromPath(this, site.images[2]))
