@@ -1,7 +1,5 @@
 package com.example.oscar.hillfort.views.siteList
 
-import android.support.v7.widget.RecyclerView
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +8,10 @@ import com.example.oscar.hillfort.helpers.readImageFromPath
 import com.example.oscar.hillfort.models.SiteListener
 import com.example.oscar.hillfort.models.SiteModel
 import kotlinx.android.synthetic.main.card_site.view.*
-import java.util.*
 
 class SiteAdapter constructor(private var sites: List<SiteModel>,
-                              private val listener: SiteListener) : RecyclerView.Adapter<SiteAdapter.MainHolder>() {
+                              private val listener: SiteListener
+) : androidx.recyclerview.widget.RecyclerView.Adapter<SiteAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -32,7 +30,7 @@ class SiteAdapter constructor(private var sites: List<SiteModel>,
 
     override fun getItemCount(): Int = sites.size
 
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MainHolder constructor(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         fun bind(site: SiteModel, listener : SiteListener) {
             itemView.txtSiteName.text = site.title

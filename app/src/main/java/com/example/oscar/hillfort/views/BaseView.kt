@@ -2,8 +2,8 @@ package com.example.oscar.hillfort.views
 
 import android.content.Intent
 import android.os.Parcelable
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.Settings.SettingsView
 import com.example.oscar.hillfort.views.location.LocationView
@@ -40,9 +40,10 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         return presenter
     }
 
-    fun init(toolbar: Toolbar) {
+    fun init(toolbar: Toolbar, upEnabled: Boolean) {
         toolbar.title = title
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
 
     override fun onDestroy() {

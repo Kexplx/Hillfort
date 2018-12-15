@@ -19,7 +19,7 @@ class SiteView : BaseView(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site)
-        init(toolbarSite)
+        init(toolbarSite, true)
 
         presenter = initPresenter(SitePresenter(this)) as SitePresenter
 

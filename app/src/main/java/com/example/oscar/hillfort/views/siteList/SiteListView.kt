@@ -2,7 +2,6 @@ package com.example.oscar.hillfort.views.siteList
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import com.example.oscar.hillfort.R
@@ -18,10 +17,10 @@ class SiteListView : BaseView(), SiteListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
-        init(toolbarList)
+        init(toolbarList, false)
 
         presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         presenter.showSites()
     }
