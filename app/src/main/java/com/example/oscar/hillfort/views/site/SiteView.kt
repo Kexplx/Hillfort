@@ -25,18 +25,6 @@ class SiteView : BaseView(), AnkoLogger {
 
         presenter = initPresenter(SitePresenter(this)) as SitePresenter
 
-        btnAdd.setOnClickListener {
-            if (txtSiteName.text.toString().isEmpty()) {
-                toast(getString(R.string.toast_TitelEinfügen))
-            } else {
-                presenter.doAddOrSave(
-                    txtSiteName.text.toString(), txtSiteDescription.text.toString(),
-                    txtAdditionNotes.text.toString(), txtDateVisited.text.toString(),
-                    chkVisited.isChecked, favorite.isChecked, ratingBar.rating
-                )
-            }
-        }
-
         chkVisited.setOnClickListener{
             if(chkVisited.isChecked){
                 txtDateVisited.isEnabled = true}
@@ -80,8 +68,6 @@ class SiteView : BaseView(), AnkoLogger {
         if(site.images[3] != ""){
             imgBtn3.setImageBitmap(readImageFromPath(this, site.images[3]))
         }
-
-        btnAdd.setText(R.string.save_images)
     }
 
     override fun updateImage(imageNumber: Int, imagePath: String) {
@@ -106,6 +92,17 @@ class SiteView : BaseView(), AnkoLogger {
             }
             R.id.item_cancel -> {
                 presenter.doCancel()
+            }
+            R.id.item_save -> {
+                if (txtSiteName.text.toString().isEmpty()) {
+                    toast(getString(R.string.toast_TitelEinfügen))
+                } else {
+                    presenter.doAddOrSave(
+                        txtSiteName.text.toString(), txtSiteDescription.text.toString(),
+                        txtAdditionNotes.text.toString(), txtDateVisited.text.toString(),
+                        chkVisited.isChecked, favorite.isChecked, ratingBar.rating
+                    )
+                }
             }
         }
         return super.onOptionsItemSelected(item)

@@ -71,7 +71,6 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         val options = MarkerOptions().title(site.title).position(LatLng(site.lat, site.lng))
         map?.addMarker(options)
         map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(site.lat, site.lng), site.zoom))
-        view?.showSite(site)
     }
 
     fun doConfigureMap(m: GoogleMap) {
