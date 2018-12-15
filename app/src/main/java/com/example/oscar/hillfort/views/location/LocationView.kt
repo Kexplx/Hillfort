@@ -1,13 +1,13 @@
 package com.example.oscar.hillfort.views.location
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.example.oscar.hillfort.R
+import com.example.oscar.hillfort.views.BaseView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 
-class LocationView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
+class LocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     lateinit var map: GoogleMap
     lateinit var presenter: LocationPresenter
@@ -21,7 +21,7 @@ class LocationView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, Google
             map = it
             map.setOnMarkerDragListener(this)
             map.setOnMarkerClickListener(this)
-            presenter.initMap(map)
+            presenter.doConfigureMap(map)
         }
     }
 
@@ -30,11 +30,11 @@ class LocationView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, Google
     override fun onMarkerDrag(marker: Marker) {}
 
     override fun onMarkerDragEnd(marker: Marker) {
-        presenter.doUpdateLocation(marker.position.latitude, marker.position.longitude, map.cameraPosition.zoom)
+        presenter.doUpdateLocation(marker.position.latitude, marker.position.longitude)
     }
 
     override fun onBackPressed() {
-        presenter.doOnBackPressed()
+        presenter.doSave()
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
