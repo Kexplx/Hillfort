@@ -8,6 +8,7 @@ import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.helpers.readImageFromPath
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
+import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_site.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
@@ -15,6 +16,7 @@ import org.jetbrains.anko.toast
 class SiteView : BaseView(), AnkoLogger {
 
     lateinit var presenter: SitePresenter
+    lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,11 @@ class SiteView : BaseView(), AnkoLogger {
             if (txtSiteName.text.toString().isEmpty()) {
                 toast(getString(R.string.toast_TitelEinfügen))
             } else {
-                presenter.doAddOrSave(txtSiteName.text.toString(), txtSiteDescription.text.toString(),txtAdditionNotes.text.toString(),txtDateVisited.text.toString(), chkVisited.isChecked)
+                presenter.doAddOrSave(
+                    txtSiteName.text.toString(), txtSiteDescription.text.toString(),
+                    txtAdditionNotes.text.toString(), txtDateVisited.text.toString(),
+                    chkVisited.isChecked, favorite.isChecked, ratingBar.rating
+                )
             }
         }
 
@@ -45,7 +51,12 @@ class SiteView : BaseView(), AnkoLogger {
         imgBtn2.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_2_REQUEST)}
         imgBtn3.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_3_REQUEST)}
 
-        btnAddLocation.setOnClickListener { presenter.doSetLocation() }
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync {
+            map = it
+            presenter.doConfigureMap(map)
+            it.setOnMapClickListener { presenter.doSetLocation() }
+        }
     }
 
     override fun showSite(site: SiteModel) {
@@ -54,6 +65,8 @@ class SiteView : BaseView(), AnkoLogger {
         txtAdditionNotes.setText(site.notes)
         txtDateVisited.setText(site.dateVisited)
         chkVisited.isChecked = site.hasBeenVisited
+        favorite.isChecked = site.favorite
+        ratingBar.rating = site.rating
 
         if(site.images[0] != ""){
             imgBtn0.setImageBitmap(readImageFromPath(this, site.images[0]))

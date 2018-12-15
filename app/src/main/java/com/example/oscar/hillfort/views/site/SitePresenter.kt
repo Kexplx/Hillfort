@@ -1,11 +1,20 @@
 package com.example.oscar.hillfort.views.site
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import com.example.oscar.hillfort.helpers.checkLocationPermissions
+import com.example.oscar.hillfort.helpers.isPermissionGranted
 import com.example.oscar.hillfort.helpers.showImagePicker
 import com.example.oscar.hillfort.models.Location
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BasePresenter
 import com.example.oscar.hillfort.views.VIEW
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 class SitePresenter(view: SiteView) : BasePresenter(view) {
 
@@ -17,23 +26,74 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
     val LOCATION_REQUEST = 2
 
     var site = SiteModel()
-    var location = Location(52.245696, -7.139102, 15f)
     var defaultLocation = Location(52.245696, -7.139102, 15f)
     var edit = false
+    var map: GoogleMap? = null
+    var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
 
     init {
         if (view.intent.hasExtra("site_edit")) {
             edit = true
-            site = view.intent.extras.getParcelable("site_edit")
+            site = view.intent.extras.getParcelable<SiteModel>("site_edit")
             view.showSite(site)
+        } else {
+            if (checkLocationPermissions(view)) {
+                doSetCurrentLocation()
+            }
         }
     }
 
-    fun doAddOrSave(title: String, description: String, notes: String, date: String, isChecked: Boolean) {
+    @SuppressLint("MissingPermission")
+    fun doSetCurrentLocation() {
+        locationService.lastLocation.addOnSuccessListener {
+            locationUpdate(it.latitude, it.longitude)
+        }
+    }
+
+    override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (isPermissionGranted(requestCode, grantResults)) {
+            doSetCurrentLocation()
+        } else {
+            locationUpdate(defaultLocation.lat, defaultLocation.lng)
+        }
+    }
+
+    fun doSetLocation() {
+        view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(site.lat, site.lng, site.zoom))
+    }
+
+    fun locationUpdate(lat: Double, lng: Double) {
+        site.lat = lat
+        site.lng = lng
+        site.zoom = 15f
+        map?.clear()
+        map?.uiSettings?.isZoomControlsEnabled = true
+        val options = MarkerOptions().title(site.title).position(LatLng(site.lat, site.lng))
+        map?.addMarker(options)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(site.lat, site.lng), site.zoom))
+        view?.showSite(site)
+    }
+
+    fun doConfigureMap(m: GoogleMap) {
+        map = m
+        locationUpdate(site.lat, site.lng)
+    }
+
+    fun doAddOrSave(
+        title: String,
+        description: String,
+        notes: String,
+        date: String,
+        isChecked: Boolean,
+        favorite: Boolean,
+        rating: Float
+    ) {
         site.title = title
         site.description = description
         site.hasBeenVisited = isChecked
         site.notes = notes
+        site.favorite = favorite
+        site.rating = rating
         site.dateVisited = date
         if (edit) {
             app.sites.update(site)
@@ -56,14 +116,6 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         showImagePicker(view!!, imageNumber)
     }
 
-    fun doSetLocation() {
-        if (edit == false) {
-            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", defaultLocation)
-        } else {
-            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(site.lat, site.lng, site.zoom))
-        }
-    }
-
     override fun doActivityResult(requestCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_0_REQUEST -> {
@@ -80,10 +132,11 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
             }
 
             LOCATION_REQUEST -> {
-                location = data.extras.getParcelable("location")
+                val location = data.extras.getParcelable<Location>("location")
                 site.lat = location.lat
                 site.lng = location.lng
                 site.zoom = location.zoom
+                locationUpdate(site.lat, site.lng)
             }
         }
     }
