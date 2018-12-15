@@ -2,13 +2,12 @@ package com.example.oscar.hillfort.views.site
 
 import android.content.Intent
 import com.example.oscar.hillfort.helpers.showImagePicker
-import com.example.oscar.hillfort.main.MainApp
 import com.example.oscar.hillfort.models.Location
 import com.example.oscar.hillfort.models.SiteModel
-import com.example.oscar.hillfort.views.location.LocationView
-import org.jetbrains.anko.intentFor
+import com.example.oscar.hillfort.views.BasePresenter
+import com.example.oscar.hillfort.views.VIEW
 
-class SitePresenter (val view: SiteView) {
+class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     val IMAGE_0_REQUEST = 10
     val IMAGE_1_REQUEST = 11
@@ -19,7 +18,7 @@ class SitePresenter (val view: SiteView) {
 
     var site = SiteModel()
     var location = Location(52.245696, -7.139102, 15f)
-    var app: MainApp = view.application as MainApp
+    var defaultLocation = Location(52.245696, -7.139102, 15f)
     var edit = false
 
     init {
@@ -41,44 +40,43 @@ class SitePresenter (val view: SiteView) {
         } else {
             app.sites.create(site)
         }
-        view.finish()
+        view?.finish()
     }
 
     fun doCancel() {
-        view.finish()
+        view?.finish()
     }
 
     fun doDelete() {
         app.sites.delete(site)
-        view.finish()
+        view?.finish()
     }
 
     fun doSelectImage(imageNumber: Int) {
-        showImagePicker(view, imageNumber)
+        showImagePicker(view!!, imageNumber)
     }
 
     fun doSetLocation() {
-        if (site.zoom != 0f) {
-            location.lat = site.lat
-            location.lng = site.lng
-            location.zoom = site.zoom
+        if (edit == false) {
+            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", defaultLocation)
+        } else {
+            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(site.lat, site.lng, site.zoom))
         }
-        view.startActivityForResult(view.intentFor<LocationView>().putExtra("location", location), LOCATION_REQUEST)
     }
 
-    fun doActivityResult(requestCode: Int, data: Intent) {
+    override fun doActivityResult(requestCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_0_REQUEST -> {
-                site.images[0] = data.data.toString(); view.updateImages(0, site.images[0])
+                site.images[0] = data.data.toString(); view?.updateImage(0, site.images[0])
             }
             IMAGE_1_REQUEST -> {
-                site.images[1] = data.data.toString(); view.updateImages(1, site.images[1])
+                site.images[1] = data.data.toString(); view?.updateImage(1, site.images[1])
             }
             IMAGE_2_REQUEST -> {
-                site.images[2] = data.data.toString(); view.updateImages(2, site.images[2])
+                site.images[2] = data.data.toString(); view?.updateImage(2, site.images[2])
             }
             IMAGE_3_REQUEST -> {
-                site.images[3] = data.data.toString(); view.updateImages(3, site.images[3])
+                site.images[3] = data.data.toString(); view?.updateImage(3, site.images[3])
             }
 
             LOCATION_REQUEST -> {

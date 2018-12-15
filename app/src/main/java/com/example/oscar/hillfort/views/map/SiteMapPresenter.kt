@@ -1,35 +1,34 @@
 package com.example.oscar.hillfort.views.map
 
-import com.example.oscar.hillfort.main.MainApp
 import com.example.oscar.hillfort.models.SiteModel
+import com.example.oscar.hillfort.views.BasePresenter
+import com.example.oscar.hillfort.views.BaseView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
-class SiteMapPresenter (var view : SiteMapsView) {
+class SiteMapPresenter(view: BaseView) : BasePresenter(view) {
 
-    var app : MainApp = view.application as MainApp
-    lateinit var map : GoogleMap
 
-    fun getSiteByTag(tag : Long) : SiteModel {
-        return app.sites.findById(tag)!!
-    }
-
-    fun configureMap() {
+    fun doPopulateMap(map: GoogleMap, sites: List<SiteModel>) {
         map.uiSettings.isZoomControlsEnabled = true
-        app.sites.findAll().forEach {
+        sites.forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.title).position(loc)
             map.addMarker(options).tag = it.id
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
+    }
 
-        if (app.sites.findAll().isNotEmpty()) {
-            val lastAddedSite = app.sites.findAll().last()
-            val loc = LatLng(lastAddedSite.lat, lastAddedSite.lng)
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, lastAddedSite.zoom))
-        }
+    fun doMarkerSelected(marker: Marker) {
+        val tag = marker.tag as Long
+        val site = app.sites.findById(tag)
+        if (site != null) view?.showSite(site)
+    }
 
-        map.setOnMarkerClickListener(view)
+    fun showSites() {
+        view?.showSites(app.sites.findAll())
     }
 }

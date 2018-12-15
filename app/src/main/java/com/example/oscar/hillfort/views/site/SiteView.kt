@@ -2,26 +2,26 @@ package com.example.oscar.hillfort.views.site
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.helpers.readImageFromPath
 import com.example.oscar.hillfort.models.SiteModel
+import com.example.oscar.hillfort.views.BaseView
 import kotlinx.android.synthetic.main.activity_site.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 
-class SiteView: AppCompatActivity(), AnkoLogger {
+class SiteView : BaseView(), AnkoLogger {
 
     lateinit var presenter: SitePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site)
-        setSupportActionBar(toolbarSite)
+        init(toolbarSite)
 
-        presenter = SitePresenter(this)
+        presenter = initPresenter(SitePresenter(this)) as SitePresenter
 
         btnAdd.setOnClickListener {
             if (txtSiteName.text.toString().isEmpty()) {
@@ -48,7 +48,7 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         btnAddLocation.setOnClickListener { presenter.doSetLocation() }
     }
 
-    fun showSite(site: SiteModel) {
+    override fun showSite(site: SiteModel) {
         txtSiteName.setText(site.title)
         txtSiteDescription.setText(site.description)
         txtAdditionNotes.setText(site.notes)
@@ -71,7 +71,7 @@ class SiteView: AppCompatActivity(), AnkoLogger {
         btnAdd.setText(R.string.save_images)
     }
 
-    fun updateImages(imageNumber : Int, imagePath : String){
+    override fun updateImage(imageNumber: Int, imagePath: String) {
         when(imageNumber){
             0 -> imgBtn0.setImageBitmap(readImageFromPath(this, imagePath))
             1 -> imgBtn1.setImageBitmap(readImageFromPath(this, imagePath))

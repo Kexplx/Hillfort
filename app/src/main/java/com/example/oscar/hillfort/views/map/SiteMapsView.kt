@@ -1,37 +1,47 @@
 package com.example.oscar.hillfort.views.map
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.helpers.readImageFromPath
+import com.example.oscar.hillfort.models.SiteModel
+import com.example.oscar.hillfort.views.BaseView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_site_maps.*
 import kotlinx.android.synthetic.main.content_site_maps.*
 
-class SiteMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class SiteMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
+
     lateinit var presenter: SiteMapPresenter
+    lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_maps)
-        setSupportActionBar(toolbarMaps)
-        mapView.onCreate(savedInstanceState)
+        super.init(toolbarMaps)
 
-        presenter = SiteMapPresenter(this)
+        presenter = initPresenter(SiteMapPresenter(this)) as SiteMapPresenter
 
+        mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
-            presenter.map = it
-            presenter.configureMap()
+            map = it
+            map.setOnMarkerClickListener(this)
+            presenter.showSites()
         }
     }
 
-    override fun onMarkerClick(marker: Marker): Boolean {
-        val tag = marker.tag as Long
-        val site = presenter.app.sites.findById(tag)
-        currentTitle.text = site!!.title
+    override fun showSite(site: SiteModel) {
+        currentTitle.text = site.title
         currentDescripton.text = site.description
-        imageView.setImageBitmap(readImageFromPath(this@SiteMapsView, site.images[0]))
+        imageView.setImageBitmap(readImageFromPath(this, site.images[0]))
+    }
+
+    override fun showSites(sites: List<SiteModel>) {
+        presenter.doPopulateMap(map, sites)
+    }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        presenter.doMarkerSelected(marker)
         return true
     }
 
