@@ -15,4 +15,9 @@
     <string name="set_location">Set Location</string>
     <string name="todo">TODO</string>
     <string name="visited">Visited</string>
+    <string name="title_activity_site_list">Hillfort</string>
+    <string name="title_activity_site">Hillfort</string>
+    <string name="title_activity_edit_location">Hillfort</string>
+    <string name="title_activity_site_maps">Hillfort</string>
+    <string name="title_activity_settings">Hillfort</string>
 </resources>
