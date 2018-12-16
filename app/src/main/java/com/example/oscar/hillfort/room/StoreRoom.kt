@@ -21,16 +21,16 @@ class StoreRoom(val context: Context) : SiteStore {
         val deferredSites = bg {
             dao.findAll()
         }
-        val placemarks = deferredSites.await()
-        return placemarks
+        val sites = deferredSites.await()
+        return sites
     }
 
     suspend override fun findById(id: Long): SiteModel? {
         val deferredSite = bg {
             dao.findById(id)
         }
-        val placemark = deferredSite.await()
-        return placemark
+        val sites = deferredSite.await()
+        return sites
     }
 
     suspend override fun create(site: SiteModel) {

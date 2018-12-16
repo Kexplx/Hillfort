@@ -3,6 +3,7 @@ package com.example.oscar.hillfort.views.siteList
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BasePresenter
 import com.example.oscar.hillfort.views.VIEW
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 
@@ -24,5 +25,10 @@ class SiteListPresenter(view: SiteListView) : BasePresenter(view) {
 
     fun doShowSitesMap() {
         view?.navigateTo(VIEW.MAPS)
+    }
+
+    fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
+        view?.navigateTo(VIEW.LOGIN)
     }
 }

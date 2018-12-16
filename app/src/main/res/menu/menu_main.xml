@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+            android:id="@+id/item_logout"
+            android:icon="@drawable/hillfort_icon"
+            android:title="@string/logout"
+            app:showAsAction="always"/>
+    <item
             android:id="@+id/item_add"
             android:icon="@drawable/ic_action_add_circle_outline"
             android:title="@string/menu_add"
@@ -9,6 +14,7 @@
     <item
             android:id="@+id/item_map"
             android:icon="@drawable/ic_action_gps_fixed"
-            android:title="@string/menu_add"
+            android:title="@string/open_map"
             app:showAsAction="always"/>
+
 </menu>
