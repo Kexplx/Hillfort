@@ -1,13 +1,13 @@
-package org.wit.placemark.room
+package com.example.oscar.hillfort.room
 
 import androidx.room.*
 import com.example.oscar.hillfort.models.SiteModel
 
 @Dao
-interface PlacemarkDao {
+interface SiteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun create(placemark: SiteModel)
+    fun create(site: SiteModel)
 
     @Query("SELECT * FROM SiteModel")
     fun findAll(): List<SiteModel>
@@ -16,8 +16,8 @@ interface PlacemarkDao {
     fun findById(id: Long): SiteModel
 
     @Update
-    fun update(placemark: SiteModel)
+    fun update(site: SiteModel)
 
     @Delete
-    fun deletePlacemark(placemark: SiteModel)
+    fun deleteSite(site: SiteModel)
 }
