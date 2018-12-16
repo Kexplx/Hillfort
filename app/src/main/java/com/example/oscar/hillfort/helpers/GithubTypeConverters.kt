@@ -6,7 +6,6 @@ import com.google.gson.Gson
 class GithubTypeConverters {
     @TypeConverter
     fun listToJson(value: List<String>?): String {
-
         return Gson().toJson(value)
     }
 
