@@ -3,6 +3,7 @@ package com.example.oscar.hillfort.views.site
 import android.annotation.SuppressLint
 import android.content.Intent
 import com.example.oscar.hillfort.helpers.checkLocationPermissions
+import com.example.oscar.hillfort.helpers.createDefaultLocationRequest
 import com.example.oscar.hillfort.helpers.isPermissionGranted
 import com.example.oscar.hillfort.helpers.showImagePicker
 import com.example.oscar.hillfort.models.Location
@@ -10,6 +11,8 @@ import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BasePresenter
 import com.example.oscar.hillfort.views.VIEW
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -25,11 +28,13 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     val LOCATION_REQUEST = 2
 
+
     var site = SiteModel()
     var defaultLocation = Location(52.245696, -7.139102, 15f)
     var edit = false
     var map: GoogleMap? = null
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
+    val locationRequest = createDefaultLocationRequest()
 
     init {
         if (view.intent.hasExtra("site_edit")) {
@@ -60,6 +65,21 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     fun doSetLocation() {
         view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(site.lat, site.lng, site.zoom))
+    }
+
+    @SuppressLint("MissingPermission")
+    fun doResartLocationUpdates() {
+        var locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult != null && locationResult.locations != null) {
+                    val l = locationResult.locations.last()
+                    locationUpdate(l.latitude, l.longitude)
+                }
+            }
+        }
+        if (!edit) {
+            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
+        }
     }
 
     fun locationUpdate(lat: Double, lng: Double) {
