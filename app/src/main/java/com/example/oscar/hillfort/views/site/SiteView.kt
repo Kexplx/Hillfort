@@ -47,12 +47,6 @@ class SiteView : BaseView(), AnkoLogger {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        mapView.onResume()
-        presenter.doResartLocationUpdates()
-    }
-
     override fun showSite(site: SiteModel) {
         txtSiteName.setText(site.title)
         txtSiteDescription.setText(site.description)
@@ -76,8 +70,8 @@ class SiteView : BaseView(), AnkoLogger {
         }
     }
 
-    override fun updateImage(imageNumber: Int, imagePath: String) {
-        when(imageNumber){
+    override fun updateImage(code: Int, imagePath: String) {
+        when (code) {
             0 -> imgBtn0.setImageBitmap(readImageFromPath(this, imagePath))
             1 -> imgBtn1.setImageBitmap(readImageFromPath(this, imagePath))
             2 -> imgBtn2.setImageBitmap(readImageFromPath(this, imagePath))
@@ -119,6 +113,12 @@ class SiteView : BaseView(), AnkoLogger {
         if (data != null) {
             presenter.doActivityResult(requestCode, data)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+        presenter.doResartLocationUpdates()
     }
 
     override fun onDestroy() {

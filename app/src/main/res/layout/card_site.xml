@@ -12,7 +12,6 @@
             android:layout_height="match_parent">
 
         <TextView
-                android:text="892.123"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp" android:layout_alignBottom="@+id/imgSite"
                 android:textColor="@color/colorPrimary"
@@ -21,7 +20,7 @@
                 android:layout_marginLeft="1dp" android:layout_marginStart="1dp"
                 app:layout_constraintTop_toBottomOf="@+id/txtLng"/>
         <TextView
-                android:text="Lat:"
+                android:text="@string/lat_text"
                 android:layout_width="28dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="16dp" android:layout_alignBottom="@+id/imgSite"
@@ -33,13 +32,11 @@
                 android:id="@+id/txtSiteName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello World"
                 android:textColor="@color/colorPrimary"
                 android:textSize="28sp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
         <TextView
-                android:text="812.312"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp" android:layout_alignBottom="@+id/imgSite"
                 android:textColor="@color/colorPrimary"
@@ -48,7 +45,7 @@
                 android:layout_marginLeft="1dp" android:layout_marginStart="1dp" android:layout_marginTop="1dp"
                 app:layout_constraintTop_toBottomOf="@+id/imgSite"/>
         <TextView
-                android:text="Lng:"
+                android:text="@string/lng_text"
                 android:layout_width="28dp"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="18dp" android:layout_alignBottom="@+id/imgSite"
@@ -71,7 +68,7 @@
                 app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"/>
         <CheckBox
-                android:text="Visited: "
+                android:text="@string/visited_text"
                 android:layout_width="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:layout_height="30dp"
@@ -82,7 +79,7 @@
                 android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@+id/txtSiteName" android:clickable="true"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp" android:focusable="true" android:layout_alignLeft="@+id/txtSiteName"/>
         <EditText
                 android:layout_width="87dp"
                 android:layout_height="30dp"
@@ -92,7 +89,6 @@
                 android:focusable="false"
                 android:id="@+id/dateVisited"
                 android:background="@null"
-                android:text="12/01/2018"
                 android:textColor="@color/colorPrimary" android:textSize="14sp"
                 android:selectAllOnFocus="false" android:singleLine="false"
                 android:layout_marginTop="12dp"
