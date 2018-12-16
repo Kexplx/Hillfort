@@ -43,6 +43,6 @@ class LocationPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doUpdateMarker(marker: Marker) {
         val loc = LatLng(location.lat, location.lng)
-        marker.setSnippet("GPS : " + loc.toString())
+        marker.snippet = "GPS : " + loc.toString()
     }
 }
