@@ -1,8 +1,8 @@
 package com.example.oscar.hillfort.main
 
 import android.app.Application
-import com.example.oscar.hillfort.models.SiteJSONStore
 import com.example.oscar.hillfort.models.SiteStore
+import com.example.oscar.hillfort.room.StoreRoom
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
@@ -11,7 +11,7 @@ class MainApp : Application(), AnkoLogger {
 
     override fun onCreate() {
         super.onCreate()
-        sites = SiteJSONStore(applicationContext)
+        sites = StoreRoom(applicationContext)
         info("Hillfort started")
     }
 }

@@ -8,9 +8,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 
 class SiteMapPresenter(view: BaseView) : BasePresenter(view) {
-
 
     fun doPopulateMap(map: GoogleMap, sites: List<SiteModel>) {
         map.uiSettings.isZoomControlsEnabled = true
@@ -24,11 +25,15 @@ class SiteMapPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doMarkerSelected(marker: Marker) {
         val tag = marker.tag as Long
-        val site = app.sites.findById(tag)
-        if (site != null) view?.showSite(site)
+        async(UI) {
+            val site = app.sites.findById(tag)
+            if (site != null) view?.showSite(site)
+        }
     }
 
-    fun showSites() {
+    fun loadSites() {
+        async(UI) {
         view?.showSites(app.sites.findAll())
+        }
     }
 }

@@ -22,7 +22,7 @@ class SiteListView : BaseView(), SiteListener {
         presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        presenter.showSites()
+        presenter.loadSites()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -48,7 +48,7 @@ class SiteListView : BaseView(), SiteListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+        presenter.loadSites()
         super.onActivityResult(requestCode, resultCode, data)
     }
 }

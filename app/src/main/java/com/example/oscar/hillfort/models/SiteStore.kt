@@ -1,9 +1,9 @@
 package com.example.oscar.hillfort.models
 
 interface SiteStore {
-    fun create(site: SiteModel)
-    fun findAll(): List<SiteModel>
-    fun delete(site: SiteModel)
-    fun findById(id:Long) : SiteModel?
-    fun update(site: SiteModel)
+    suspend fun findAll(): List<SiteModel>
+    suspend fun findById(id: Long): SiteModel?
+    suspend fun create(site: SiteModel)
+    suspend fun update(site: SiteModel)
+    suspend fun delete(site: SiteModel)
 }

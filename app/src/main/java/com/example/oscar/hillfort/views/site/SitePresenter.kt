@@ -18,6 +18,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 
 class SitePresenter(view: SiteView) : BasePresenter(view) {
 
@@ -114,12 +116,14 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         site.favorite = favorite
         site.rating = rating
         site.dateVisited = date
-        if (edit) {
-            app.sites.update(site)
-        } else {
-            app.sites.create(site)
+        async(UI) {
+            if (edit) {
+                app.sites.update(site)
+            } else {
+                app.sites.create(site)
+            }
+            view?.finish()
         }
-        view?.finish()
     }
 
     fun doCancel() {
@@ -127,8 +131,10 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
     }
 
     fun doDelete() {
-        app.sites.delete(site)
-        view?.finish()
+        async(UI) {
+            app.sites.delete(site)
+            view?.finish()
+        }
     }
 
     fun doSelectImage(imageNumber: Int) {

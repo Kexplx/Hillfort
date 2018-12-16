@@ -30,27 +30,27 @@ class SiteJSONStore : SiteStore, AnkoLogger {
         }
     }
 
-    override fun delete(site: SiteModel) {
+    suspend override fun delete(site: SiteModel) {
         sites.remove(site)
         serialize()
     }
 
-    override fun findAll(): MutableList<SiteModel> {
+    suspend override fun findAll(): MutableList<SiteModel> {
         return sites
     }
 
-    override fun findById(id: Long): SiteModel? {
+    suspend override fun findById(id: Long): SiteModel? {
         var foundsite:SiteModel? = sites.find{it.id == id}
         return foundsite
     }
 
-    override fun create(site: SiteModel) {
+    suspend override fun create(site: SiteModel) {
         site.id = generateRandomId()
         sites.add(site)
         serialize()
     }
 
-    override fun update(site: SiteModel) {
+    suspend override fun update(site: SiteModel) {
         var foundSite: SiteModel? = sites.find { it -> it.id == site.id }
         if (foundSite != null) {
             foundSite.title = site.title

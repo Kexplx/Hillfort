@@ -26,7 +26,7 @@ class SiteMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
         mapView.getMapAsync {
             map = it
             map.setOnMarkerClickListener(this)
-            presenter.showSites()
+            presenter.loadSites()
         }
     }
 
