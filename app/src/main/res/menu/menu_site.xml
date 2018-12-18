@@ -4,15 +4,15 @@
     <item
             android:visible="true"
             android:id="@+id/item_cancel"
-            android:icon="@drawable/ic_action_cancel_presentation"
-            app:showAsAction="always"/>
+            android:icon="@drawable/cancel"
+            app:showAsAction="always" android:title="@string/siteView_toolbar_cancel"/>
     <item
             android:visible="true"
             android:id="@+id/item_delete"
-            android:icon="@drawable/ic_action_delete_forever"
-            app:showAsAction="always"/>
+            android:icon="@drawable/garbage"
+            app:showAsAction="always" android:title="@string/siteView_toolbar_delete"/>
     <item
             android:id="@+id/item_save"
-            android:icon="@drawable/ic_action_save"
-            app:showAsAction="always" tools:ignore="MenuTitle"/>
+            android:icon="@drawable/verified"
+            app:showAsAction="always" android:title="@string/siteView_toolbar_save"/>
 </menu>

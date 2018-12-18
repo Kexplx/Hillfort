@@ -19,8 +19,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleTextColor="@color/colorToolBarText"
-                app:title="@string/hillfort_title"
-                android:theme="@style/AppTheme"></androidx.appcompat.widget.Toolbar>
+                app:title="@string/toolbar_titleText"
+                android:theme="@style/AppTheme"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

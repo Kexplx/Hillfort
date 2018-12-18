@@ -18,7 +18,7 @@
                 app:theme="@style/AppTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="@string/hillfort_title"
+                app:title="@string/toolbar_titleText"
                 app:titleTextColor="@color/colorToolBarText"/>
     </com.google.android.material.appbar.AppBarLayout>
 

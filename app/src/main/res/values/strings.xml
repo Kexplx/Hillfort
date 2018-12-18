@@ -2,7 +2,6 @@
     <string name="app_name">Hillfort</string>
     <string name="select_sight_image">Please select Sight</string>
     <string name="menu_add">Add</string>
-    <string name="hillfort_title">Hillfort - Start Exploring</string>
     <string name="site_name">Name of Site</string>
     <string name="site_description">Description of Site</string>
     <string name="site_notes">Additional Notes</string>
@@ -26,4 +25,12 @@
     <string name="title_activity_login">Hillfort</string>
     <string name="logout">Logout</string>
     <string name="open_map">Open Map</string>
+    <string name="btn_signUp">Sign Up</string>
+    <string name="btn_log_in">Log In</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_email">Email</string>
+    <string name="toolbar_titleText">Hillfort</string>
+    <string name="siteView_toolbar_cancel">Cancel</string>
+    <string name="siteView_toolbar_delete">Delete</string>
+    <string name="siteView_toolbar_save">Save</string>
 </resources>

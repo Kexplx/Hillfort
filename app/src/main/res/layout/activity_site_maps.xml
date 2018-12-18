@@ -18,7 +18,7 @@
                 android:id="@+id/toolbarMaps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:titleTextColor="@color/colorToolBarText" app:title="@string/hillfort_title"/>
+                app:titleTextColor="@color/colorToolBarText" app:title="@string/toolbar_titleText"/>
 
     </com.google.android.material.appbar.AppBarLayout>
     <include layout="@layout/content_site_maps"/>
