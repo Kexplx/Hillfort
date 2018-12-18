@@ -68,6 +68,10 @@ class SiteView : BaseView(), AnkoLogger {
         if (site.images[3] != "") {
             Glide.with(this).load(site.images[3]).into(imgBtn3);
         }
+
+        if (site.hasBeenVisited) {
+            txtDateVisited.isEnabled = true
+        }
     }
 
     override fun updateImage(code: Int, imagePath: String) {

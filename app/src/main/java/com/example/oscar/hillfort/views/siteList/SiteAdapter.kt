@@ -38,6 +38,7 @@ class SiteAdapter constructor(
             itemView.txtLat.text = site.lat.toString().take(6)
             itemView.txtLng.text = site.lng.toString().take(6)
             itemView.dateVisited.setText(site.dateVisited)
+
             itemView.chkHasBeenVisited.isChecked = site.hasBeenVisited
             Glide.with(itemView.context).load(site.images[0]).into(itemView.imgSite);
             itemView.setOnClickListener { listener.onSiteClick(site) }

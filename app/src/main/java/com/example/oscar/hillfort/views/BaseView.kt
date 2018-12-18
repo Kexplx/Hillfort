@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.Settings.SettingsView
 import com.example.oscar.hillfort.views.location.LocationView
@@ -43,7 +44,7 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     }
 
     fun init(toolbar: Toolbar, upEnabled: Boolean) {
-        toolbar.title = "Hillfort"
+        toolbar.title = getString(R.string.toolbar_titleText)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
@@ -52,7 +53,6 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         basePresenter?.onDestroy()
         super.onDestroy()
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
