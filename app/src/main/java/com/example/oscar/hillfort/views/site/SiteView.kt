@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.bumptech.glide.Glide
 import com.example.oscar.hillfort.R
-import com.example.oscar.hillfort.helpers.readImageFromPath
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
 import com.google.android.gms.maps.GoogleMap
@@ -25,19 +25,19 @@ class SiteView : BaseView(), AnkoLogger {
 
         presenter = initPresenter(SitePresenter(this)) as SitePresenter
 
-        chkVisited.setOnClickListener{
-            if(chkVisited.isChecked){
-                txtDateVisited.isEnabled = true}
-            else{
+        chkVisited.setOnClickListener {
+            if (chkVisited.isChecked) {
+                txtDateVisited.isEnabled = true
+            } else {
                 txtDateVisited.text = null
                 txtDateVisited.isEnabled = false
             }
         }
 
-        imgBtn0.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_0_REQUEST)}
-        imgBtn1.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_1_REQUEST)}
-        imgBtn2.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_2_REQUEST)}
-        imgBtn3.setOnClickListener {presenter.doSelectImage(presenter.IMAGE_3_REQUEST)}
+        imgBtn0.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_0_REQUEST) }
+        imgBtn1.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_1_REQUEST) }
+        imgBtn2.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_2_REQUEST) }
+        imgBtn3.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_3_REQUEST) }
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
@@ -56,26 +56,26 @@ class SiteView : BaseView(), AnkoLogger {
         favorite.isChecked = site.favorite
         ratingBar.rating = site.rating
 
-        if(site.images[0] != ""){
-            imgBtn0.setImageBitmap(readImageFromPath(this, site.images[0]))
+        if (site.images[0] != "") {
+            Glide.with(this).load(site.images[0]).into(imgBtn0);
         }
-        if(site.images[1] != ""){
-            imgBtn1.setImageBitmap(readImageFromPath(this, site.images[1]))
+        if (site.images[1] != "") {
+            Glide.with(this).load(site.images[1]).into(imgBtn1);
         }
-        if(site.images[2] != ""){
-            imgBtn2.setImageBitmap(readImageFromPath(this, site.images[2]))
+        if (site.images[2] != "") {
+            Glide.with(this).load(site.images[2]).into(imgBtn2);
         }
-        if(site.images[3] != ""){
-            imgBtn3.setImageBitmap(readImageFromPath(this, site.images[3]))
+        if (site.images[3] != "") {
+            Glide.with(this).load(site.images[3]).into(imgBtn3);
         }
     }
 
     override fun updateImage(code: Int, imagePath: String) {
         when (code) {
-            0 -> imgBtn0.setImageBitmap(readImageFromPath(this, imagePath))
-            1 -> imgBtn1.setImageBitmap(readImageFromPath(this, imagePath))
-            2 -> imgBtn2.setImageBitmap(readImageFromPath(this, imagePath))
-            3 -> imgBtn3.setImageBitmap(readImageFromPath(this, imagePath))
+            0 -> Glide.with(this).load(imagePath).into(imgBtn0);
+            1 -> Glide.with(this).load(imagePath).into(imgBtn1);
+            2 -> Glide.with(this).load(imagePath).into(imgBtn2);
+            3 -> Glide.with(this).load(imagePath).into(imgBtn3);
         }
     }
 

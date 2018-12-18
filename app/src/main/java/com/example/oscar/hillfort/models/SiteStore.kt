@@ -6,4 +6,5 @@ interface SiteStore {
     suspend fun create(site: SiteModel)
     suspend fun update(site: SiteModel)
     suspend fun delete(site: SiteModel)
+    fun clear()
 }

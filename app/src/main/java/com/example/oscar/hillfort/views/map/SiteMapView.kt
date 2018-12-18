@@ -1,8 +1,8 @@
 package com.example.oscar.hillfort.views.map
 
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.oscar.hillfort.R
-import com.example.oscar.hillfort.helpers.readImageFromPath
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
 import com.google.android.gms.maps.GoogleMap
@@ -10,7 +10,7 @@ import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_site_maps.*
 import kotlinx.android.synthetic.main.content_site_maps.*
 
-class SiteMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
+class SiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
     lateinit var presenter: SiteMapPresenter
     lateinit var map: GoogleMap
@@ -33,7 +33,7 @@ class SiteMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
     override fun showSite(site: SiteModel) {
         currentTitle.text = site.title
         currentDescripton.text = site.description
-        imageView.setImageBitmap(readImageFromPath(this, site.images[0]))
+        Glide.with(this).load(site.images[0]).into(imageView);
     }
 
     override fun showSites(sites: List<SiteModel>) {

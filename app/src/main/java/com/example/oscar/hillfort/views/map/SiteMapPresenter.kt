@@ -18,22 +18,21 @@ class SiteMapPresenter(view: BaseView) : BasePresenter(view) {
         sites.forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.title).position(loc)
-            map.addMarker(options).tag = it.id
+            map.addMarker(options).tag = it
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
     }
 
     fun doMarkerSelected(marker: Marker) {
-        val tag = marker.tag as Long
         async(UI) {
-            val site = app.sites.findById(tag)
+            val site = marker.tag as SiteModel
             if (site != null) view?.showSite(site)
         }
     }
 
     fun loadSites() {
         async(UI) {
-        view?.showSites(app.sites.findAll())
+            view?.showSites(app.sites.findAll())
         }
     }
 }

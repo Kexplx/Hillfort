@@ -4,7 +4,7 @@
                                                      xmlns:tools="http://schemas.android.com/tools"
                                                      android:layout_width="match_parent"
                                                      android:layout_height="match_parent"
-                                                     tools:context="com.example.oscar.hillfort.views.map.SiteMapsView">
+                                                     tools:context="com.example.oscar.hillfort.views.map.SiteMapView">
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -21,5 +21,5 @@
                 app:titleTextColor="@color/colorToolBarText" app:title="@string/hillfort_title"/>
 
     </com.google.android.material.appbar.AppBarLayout>
-    <include layout="@layout/content_site_maps" />
+    <include layout="@layout/content_site_maps"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

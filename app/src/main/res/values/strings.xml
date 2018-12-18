@@ -23,7 +23,7 @@
     <string name="visited_text">Visited:</string>
     <string name="lng_text">Lng:</string>
     <string name="lat_text">Lat:</string>
-    <string name="title_activity_login">Signup/Login to Hillfort</string>
+    <string name="title_activity_login">Hillfort</string>
     <string name="logout">Logout</string>
     <string name="open_map">Open Map</string>
 </resources>

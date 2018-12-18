@@ -51,6 +51,6 @@ class StoreRoom(val context: Context) : SiteStore {
         }
     }
 
-    fun clear() {
+    override fun clear() {
     }
 }

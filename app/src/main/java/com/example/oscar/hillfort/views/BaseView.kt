@@ -8,7 +8,7 @@ import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.Settings.SettingsView
 import com.example.oscar.hillfort.views.location.LocationView
 import com.example.oscar.hillfort.views.login.LoginView
-import com.example.oscar.hillfort.views.map.SiteMapsView
+import com.example.oscar.hillfort.views.map.SiteMapView
 import com.example.oscar.hillfort.views.site.SiteView
 import com.example.oscar.hillfort.views.siteList.SiteListView
 import org.jetbrains.anko.AnkoLogger
@@ -26,7 +26,7 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         when (view) {
             VIEW.LOCATION -> intent = Intent(this, LocationView::class.java)
             VIEW.SITE -> intent = Intent(this, SiteView::class.java)
-            VIEW.MAPS -> intent = Intent(this, SiteMapsView::class.java)
+            VIEW.MAPS -> intent = Intent(this, SiteMapView::class.java)
             VIEW.LIST -> intent = Intent(this, SiteListView::class.java)
             VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)

@@ -29,6 +29,7 @@ class SiteListPresenter(view: SiteListView) : BasePresenter(view) {
 
     fun doLogout() {
         FirebaseAuth.getInstance().signOut()
+        app.sites.clear()
         view?.navigateTo(VIEW.LOGIN)
     }
 }

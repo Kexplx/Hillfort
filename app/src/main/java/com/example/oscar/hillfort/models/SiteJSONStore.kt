@@ -40,7 +40,7 @@ class SiteJSONStore : SiteStore, AnkoLogger {
     }
 
     suspend override fun findById(id: Long): SiteModel? {
-        var foundsite:SiteModel? = sites.find{it.id == id}
+        var foundsite: SiteModel? = sites.find { it.id == id }
         return foundsite
     }
 
@@ -77,5 +77,9 @@ class SiteJSONStore : SiteStore, AnkoLogger {
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         sites = Gson().fromJson(jsonString, listType)
+    }
+
+    override fun clear() {
+        sites.clear()
     }
 }
