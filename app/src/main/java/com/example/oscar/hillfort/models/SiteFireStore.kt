@@ -84,12 +84,12 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
                     }.addOnSuccessListener { taskSnapshot ->
                         taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
                             site.images[curr] = it.toString()
-                            db.child("users").child(userId).child("site").child(site.fbId).setValue(site)
                         }
                     }
                 }
             }
         }
+        db.child("users").child(userId).child("sites").child(site.fbId).setValue(site)
     }
 
     fun fetchSites(sitesReady: () -> Unit) {

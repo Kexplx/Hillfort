@@ -85,7 +85,7 @@ class SiteView : BaseView(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_site, menu)
-        if (presenter.edit) menu.getItem(0).isVisible = true
+        if (presenter.edit) menu.getItem(1).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
