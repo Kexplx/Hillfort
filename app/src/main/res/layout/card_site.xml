@@ -19,6 +19,18 @@
                 app:layout_constraintStart_toEndOf="@+id/textView10"
                 android:layout_marginLeft="1dp" android:layout_marginStart="1dp"
                 app:layout_constraintTop_toBottomOf="@+id/txtLng"/>
+        <CheckBox
+                android:button="@android:drawable/btn_star"
+                android:layout_width="34dp"
+                android:layout_height="39dp"
+                android:id="@+id/favorite"
+                android:clickable="false"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="15dp" app:layout_constraintEnd_toStartOf="@+id/imgSite"
+                android:layout_marginEnd="9dp" android:layout_marginRight="9dp" android:checked="true"
+                android:visibility="gone"/>
         <TextView
                 android:text="@string/lat_text"
                 android:layout_width="28dp"
@@ -33,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="28sp" app:layout_constraintTop_toTopOf="parent"
+                android:textSize="24sp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
         <TextView
@@ -75,9 +87,9 @@
                 android:enabled="false"
                 android:id="@+id/chkHasBeenVisited"
                 android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@+id/txtSiteName" android:clickable="true"
+                app:layout_constraintTop_toBottomOf="@+id/txtSiteName"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp" android:focusable="true" android:layout_alignLeft="@+id/txtSiteName"/>
+                android:layout_marginStart="16dp" android:layout_alignLeft="@+id/txtSiteName"/>
         <EditText
                 android:layout_width="87dp"
                 android:layout_height="30dp"

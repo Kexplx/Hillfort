@@ -13,6 +13,7 @@ class LocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMar
     lateinit var presenter: LocationPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment

@@ -6,11 +6,11 @@
 
     <application
             android:name=".main.MainApp"
-            android:icon="@drawable/hillfort_icon"
+            android:icon="@drawable/icon"
             android:label="@string/app_name"
-            android:roundIcon="@drawable/hillfort_icon"
+            android:roundIcon="@drawable/icon"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/SplashTheme">
 
         <activity android:name=".views.login.LoginView"
                   android:label="@string/title_activity_login"

@@ -9,12 +9,15 @@ import com.example.oscar.hillfort.models.SiteListener
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
 import kotlinx.android.synthetic.main.activity_site_list.*
+import java.util.*
+
 
 class SiteListView : BaseView(), SiteListener {
 
     lateinit var presenter: SiteListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
         init(toolbarList, false)
@@ -32,6 +35,9 @@ class SiteListView : BaseView(), SiteListener {
 
     override fun showSites(sites: List<SiteModel>) {
         recyclerView.adapter = SiteAdapter(sites, this)
+        Collections.sort(
+            sites
+        ) { lhs, rhs -> if (lhs.favorite && rhs.favorite) 0 else if (rhs.favorite) 1 else -1 }
         recyclerView.adapter?.notifyDataSetChanged()
     }
 

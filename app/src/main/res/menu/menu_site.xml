@@ -2,17 +2,12 @@
 <menu xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto" tools:ignore="MissingDefaultResource">
     <item
-            android:visible="true"
-            android:id="@+id/item_cancel"
-            android:icon="@drawable/cancel"
-            app:showAsAction="always" android:title="@string/siteView_toolbar_cancel"/>
-    <item
             android:visible="false"
             android:id="@+id/item_delete"
-            android:icon="@drawable/garbage"
+            android:icon="@drawable/trash"
             app:showAsAction="always" android:title="@string/siteView_toolbar_delete"/>
     <item
             android:id="@+id/item_save"
-            android:icon="@drawable/verified"
+            android:icon="@drawable/success"
             app:showAsAction="always" android:title="@string/siteView_toolbar_save"/>
 </menu>

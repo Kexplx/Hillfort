@@ -16,6 +16,7 @@ class SiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
     lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_maps)
         super.init(toolbarMaps, true)

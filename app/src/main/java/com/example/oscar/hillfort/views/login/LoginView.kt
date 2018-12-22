@@ -12,6 +12,7 @@ class LoginView : BaseView() {
     lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         init(toolbar, false)

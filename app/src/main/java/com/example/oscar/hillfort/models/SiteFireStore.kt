@@ -45,6 +45,8 @@ class SiteFireStore(val context: Context) : SiteStore, AnkoLogger {
             foundSite.images = site.images
             foundSite.lat = site.lat
             foundSite.lng = site.lng
+            foundSite.notes = site.notes
+            foundSite.hasBeenVisited = site.hasBeenVisited
             foundSite.favorite = site.favorite
             foundSite.dateVisited = site.dateVisited
             foundSite.rating = site.rating

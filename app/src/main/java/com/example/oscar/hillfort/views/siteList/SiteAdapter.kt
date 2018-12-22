@@ -38,7 +38,6 @@ class SiteAdapter constructor(
             itemView.txtLat.text = site.lat.toString().take(6)
             itemView.txtLng.text = site.lng.toString().take(6)
             itemView.dateVisited.setText(site.dateVisited)
-
             itemView.chkHasBeenVisited.isChecked = site.hasBeenVisited
             Glide.with(itemView.context).load(site.images[0]).into(itemView.imgSite);
             itemView.setOnClickListener { listener.onSiteClick(site) }
@@ -46,7 +45,13 @@ class SiteAdapter constructor(
             if (site.hasBeenVisited) {
                 itemView.dateVisited.visibility = View.VISIBLE
             } else {
-                itemView.dateVisited.visibility = View.INVISIBLE
+                itemView.dateVisited.visibility = View.GONE
+            }
+
+            if (site.favorite) {
+                itemView.favorite.visibility = View.VISIBLE
+            } else {
+                itemView.favorite.visibility = View.GONE
             }
         }
     }

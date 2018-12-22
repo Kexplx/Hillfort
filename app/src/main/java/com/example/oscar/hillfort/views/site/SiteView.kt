@@ -19,6 +19,7 @@ class SiteView : BaseView(), AnkoLogger {
     lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site)
         init(toolbarSite, true)
@@ -85,7 +86,7 @@ class SiteView : BaseView(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_site, menu)
-        if (presenter.edit) menu.getItem(1).isVisible = true
+        if (presenter.edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -93,9 +94,6 @@ class SiteView : BaseView(), AnkoLogger {
         when (item?.itemId) {
             R.id.item_delete -> {
                 presenter.doDelete()
-            }
-            R.id.item_cancel -> {
-                presenter.doCancel()
             }
             R.id.item_save -> {
                 if (txtSiteName.text.toString().isEmpty()) {
