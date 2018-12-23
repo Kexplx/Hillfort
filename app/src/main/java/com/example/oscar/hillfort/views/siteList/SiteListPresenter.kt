@@ -15,6 +15,12 @@ class SiteListPresenter(view: SiteListView) : BasePresenter(view) {
         }
     }
 
+    fun loadSitesWithFilter(filter: String) {
+        async(UI) {
+            view?.showSites(app.sites.findAll().filter { x -> x.title.startsWith(filter) })
+        }
+    }
+
     fun doAddSite() {
         view?.navigateTo(VIEW.SITE)
     }

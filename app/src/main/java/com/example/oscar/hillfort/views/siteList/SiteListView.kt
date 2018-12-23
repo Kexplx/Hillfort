@@ -2,6 +2,8 @@ package com.example.oscar.hillfort.views.siteList
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import com.example.oscar.hillfort.R
@@ -21,6 +23,14 @@ class SiteListView : BaseView(), SiteListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
         init(toolbarList, false)
+
+        txtFilter.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                presenter.loadSitesWithFilter(s.toString())
+            }
+        })
 
         presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
