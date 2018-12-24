@@ -1,58 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.oscar.hillfort.views.siteList.SiteListView">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+        android:fitsSystemWindows="true">
+    <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-        <EditText
-                android:id="@+id/txtFilter"
-                android:layout_width="0dp"
-                android:layout_height="41dp"
-                android:ems="10"
-                android:hint="Search by Name"
-                android:inputType="text"
-                android:textColor="@color/colorPrimary"
-                android:importantForAutofill="no"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" android:textSize="18sp"
-                app:layout_constraintHorizontal_bias="0.0"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:visibility="visible"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="633dp"
-                android:scrollbars="vertical"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="1dp" app:layout_constraintTop_toBottomOf="@+id/txtFilter">
-        </androidx.recyclerview.widget.RecyclerView>
-        <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:fitsSystemWindows="true"
-                app:theme="@style/AppTheme" android:id="@+id/appBarLayout2">
+                android:layout_height="match_parent"
+                tools:context="com.example.oscar.hillfort.views.siteList.SiteListView">
 
-            <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbarList"
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:titleTextColor="@color/colorPrimary"
-                    app:title="@string/toolbar_titleText"
-                    android:theme="@style/AppTheme"/>
-        </com.google.android.material.appbar.AppBarLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_height="wrap_content">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="633dp"
+                        android:scrollbars="vertical"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginTop="1dp" app:layout_constraintTop_toBottomOf="@+id/txtFilter">
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <EditText
+                        android:id="@+id/txtFilter"
+                        android:layout_width="0dp"
+                        android:layout_height="41dp"
+                        android:ems="10"
+                        android:hint="Search by Name"
+                        android:inputType="text"
+                        android:focusedByDefault="false"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" android:textSize="18sp"
+                        app:layout_constraintHorizontal_bias="0.0"/>
+
+                <com.google.android.material.appbar.AppBarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:fitsSystemWindows="true"
+                        app:theme="@style/AppTheme" android:id="@+id/appBarLayout2">
+
+                    <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbarList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:titleTextColor="@color/colorPrimary"
+                            app:title="@string/toolbar_titleText"
+                            android:theme="@style/AppTheme"/>
+                </com.google.android.material.appbar.AppBarLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </FrameLayout>
+    <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:itemTextColor="@color/colorPrimary"
+            app:itemIconTint="@color/colorPrimary"
+            app:menu="@menu/drawer_menu_items"
+            app:headerLayout="@layout/nav_header"
+            android:fitsSystemWindows="true"/>
+</androidx.drawerlayout.widget.DrawerLayout>

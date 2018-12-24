@@ -6,23 +6,33 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.models.SiteListener
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
+import com.example.oscar.hillfort.views.VIEW
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_site_list.*
-import java.util.*
-
+import java.util.Collections.sort
 
 class SiteListView : BaseView(), SiteListener {
 
     lateinit var presenter: SiteListPresenter
+    private lateinit var mDrawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_site_list)
         init(toolbarList, false)
+
+        val actionbar: androidx.appcompat.app.ActionBar? = supportActionBar
+        actionbar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.menu)
+        }
 
         txtFilter.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
@@ -36,6 +46,23 @@ class SiteListView : BaseView(), SiteListener {
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         presenter.loadSites()
+
+        mDrawerLayout = findViewById(R.id.drawer_layout)
+
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            menuItem.isChecked = true
+            mDrawerLayout.closeDrawers()
+
+            when (menuItem?.itemId) {
+                R.id.nav_settings -> {
+                    navigateTo(VIEW.SETTINGS)
+                }
+                R.id.nav_credits -> {
+                }
+            }
+            true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -45,9 +72,12 @@ class SiteListView : BaseView(), SiteListener {
 
     override fun showSites(sites: List<SiteModel>) {
         recyclerView.adapter = SiteAdapter(sites, this)
-        Collections.sort(
-            sites
-        ) { lhs, rhs -> if (lhs.favorite && rhs.favorite) 0 else if (rhs.favorite) 1 else -1 }
+        sort(sites) { lhs, rhs ->
+            if (lhs.favorite && rhs.favorite) 0
+            else if (rhs.favorite) 1
+            else -1
+        }
+
         recyclerView.adapter?.notifyDataSetChanged()
     }
 
@@ -56,6 +86,7 @@ class SiteListView : BaseView(), SiteListener {
             R.id.item_add -> presenter.doAddSite()
             R.id.item_map -> presenter.doShowSitesMap()
             R.id.item_logout -> presenter.doLogout()
+            else -> mDrawerLayout.openDrawer(GravityCompat.START)
         }
         return super.onOptionsItemSelected(item)
     }
