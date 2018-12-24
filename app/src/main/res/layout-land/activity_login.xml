@@ -45,33 +45,34 @@
                 android:textColor="@color/colorPrimary"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="56dp"
-                android:layout_marginStart="56dp" android:hint="@string/hint_email" android:text="oscar.rosner@web.de"/>
+                android:hint="@string/hint_email"
+                android:text="oscar.rosner@web.de"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                android:layout_marginLeft="11dp" android:layout_marginStart="11dp" android:layout_marginTop="80dp"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="188dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="52dp"
+                android:layout_width="71dp"
+                android:layout_height="63dp"
                 android:indeterminateTint="@color/colorPrimary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUp" android:visibility="gone"
-                android:layout_marginLeft="100dp"/>
+
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                android:layout_marginLeft="112dp" android:layout_marginStart="112dp" android:layout_marginTop="26dp"
+                app:layout_constraintTop_toBottomOf="@+id/signUp" android:visibility="gone"/>
 
         <EditText
                 android:id="@+id/password"
                 android:layout_width="284dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:textColor="@color/colorPrimary"
                 android:inputType="textPassword"
                 app:layout_constraintTop_toBottomOf="@+id/email"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="56dp"
-                android:layout_marginStart="56dp" android:hint="@string/hint_password" android:text="aragorn7"/>
+                android:hint="@string/hint_password" android:text="aragorn7"
+                android:layout_marginTop="16dp" app:layout_constraintStart_toEndOf="@+id/imageView2"
+                android:layout_marginLeft="11dp" android:layout_marginStart="11dp"/>
 
         <Button
                 android:id="@+id/signUp"
@@ -80,9 +81,10 @@
                 android:text="@string/btn_signUp"
                 android:textColor="@color/colorPrimaryDark"
                 android:background="@color/card"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="56dp"
-                android:layout_marginStart="56dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/password" android:textAllCaps="false"/>
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/password" android:textAllCaps="false"
+                app:layout_constraintStart_toEndOf="@+id/imageView2" android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"/>
 
         <Button
                 android:id="@+id/logIn"
@@ -91,13 +93,12 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:text="@string/btn_log_in"
                 android:background="@color/card"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="58dp" android:layout_marginRight="58dp"
-                android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/password"
-                android:textAllCaps="false"/>
+                android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/password"
+                android:textAllCaps="false" app:layout_constraintStart_toEndOf="@+id/signUp"
+                android:layout_marginLeft="26dp" android:layout_marginStart="26dp"/>
         <ImageView
-                android:layout_width="333dp"
-                android:layout_height="253dp" app:srcCompat="@drawable/brochure"
+                android:layout_width="294dp"
+                android:layout_height="284dp" app:srcCompat="@drawable/brochure"
                 android:id="@+id/imageView2" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="80dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="28dp" android:layout_marginStart="28dp"/>
