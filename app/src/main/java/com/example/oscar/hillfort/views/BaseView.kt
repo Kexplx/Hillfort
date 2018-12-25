@@ -57,7 +57,7 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
-            basePresenter?.doActivityResult(requestCode, data)
+            basePresenter?.doActivityResult(requestCode, resultCode, data)
         }
     }
 

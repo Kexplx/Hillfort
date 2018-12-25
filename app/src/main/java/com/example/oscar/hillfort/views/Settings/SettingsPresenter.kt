@@ -19,7 +19,7 @@ class SettingsPresenter(view: SettingsView) : BasePresenter(view) {
     }
 
     fun doChangePassword(password: String) {
-        var currentUser = auth.currentUser
+        val currentUser = auth.currentUser
         currentUser?.updatePassword(password)
     }
 }

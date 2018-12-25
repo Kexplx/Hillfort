@@ -23,7 +23,7 @@ class SiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
         presenter = initPresenter(SiteMapPresenter(this)) as SiteMapPresenter
 
-        mapView.onCreate(savedInstanceState);
+        mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
             map = it
             map.setOnMarkerClickListener(this)
@@ -34,7 +34,7 @@ class SiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
     override fun showSite(site: SiteModel) {
         currentTitle.text = site.title
         currentDescripton.text = site.description
-        Glide.with(this).load(site.images[0]).into(imageView);
+        Glide.with(this).load(site.images[0]).into(imageView)
     }
 
     override fun showSites(sites: List<SiteModel>) {

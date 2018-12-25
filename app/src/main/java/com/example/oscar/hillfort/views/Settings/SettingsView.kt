@@ -26,11 +26,12 @@ class SettingsView : BaseView() {
         }
 
         btnUpdatePassword.setOnClickListener {
-            if (txtPassword.length() > 5)
+            if (txtPassword.length() > 5) {
                 async(UI) {
                     presenter.doChangePassword(txtPassword.text.toString())
                     txtPassword.setText("")
                 }
+            }
         }
     }
 }

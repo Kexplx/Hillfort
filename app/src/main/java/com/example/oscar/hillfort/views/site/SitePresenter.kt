@@ -11,8 +11,6 @@ import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BasePresenter
 import com.example.oscar.hillfort.views.VIEW
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -28,8 +26,9 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
     val IMAGE_2_REQUEST = 12
     val IMAGE_3_REQUEST = 13
 
-    val LOCATION_REQUEST = 2
+    var locationHasBeenSet = false
 
+    val LOCATION_REQUEST = 2
 
     var site = SiteModel()
     var defaultLocation = Location(52.245696, -7.139102, 15f)
@@ -41,7 +40,7 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
     init {
         if (view.intent.hasExtra("site_edit")) {
             edit = true
-            site = view.intent.extras.getParcelable<SiteModel>("site_edit")
+            site = view.intent.extras.getParcelable("site_edit")
             view.showSite(site)
         } else {
             if (checkLocationPermissions(view)) {
@@ -67,21 +66,6 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     fun doSetLocation() {
         view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(site.lat, site.lng, site.zoom))
-    }
-
-    @SuppressLint("MissingPermission")
-    fun doResartLocationUpdates() {
-        var locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult?) {
-                if (locationResult != null && locationResult.locations != null) {
-                    val l = locationResult.locations.last()
-                    locationUpdate(l.latitude, l.longitude)
-                }
-            }
-        }
-        if (!edit) {
-            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
-        }
     }
 
     fun locationUpdate(lat: Double, lng: Double) {
@@ -141,7 +125,7 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         showImagePicker(view!!, imageNumber)
     }
 
-    override fun doActivityResult(requestCode: Int, data: Intent) {
+    override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_0_REQUEST -> {
                 site.images[0] = data.data.toString(); view?.updateImage(0, site.images[0])

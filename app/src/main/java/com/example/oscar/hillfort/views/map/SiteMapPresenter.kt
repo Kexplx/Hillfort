@@ -26,7 +26,7 @@ class SiteMapPresenter(view: BaseView) : BasePresenter(view) {
     fun doMarkerSelected(marker: Marker) {
         async(UI) {
             val site = marker.tag as SiteModel
-            if (site != null) view?.showSite(site)
+            view?.showSite(site)
         }
     }
 

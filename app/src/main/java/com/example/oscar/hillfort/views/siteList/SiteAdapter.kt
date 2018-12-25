@@ -16,7 +16,7 @@ class SiteAdapter constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
-            LayoutInflater.from(parent?.context).inflate(
+            LayoutInflater.from(parent.context).inflate(
                 R.layout.card_site,
                 parent,
                 false
@@ -39,7 +39,7 @@ class SiteAdapter constructor(
             itemView.txtLng.text = site.lng.toString().take(6)
             itemView.dateVisited.setText(site.dateVisited)
             itemView.chkHasBeenVisited.isChecked = site.hasBeenVisited
-            Glide.with(itemView.context).load(site.images[0]).into(itemView.imgSite);
+            Glide.with(itemView.context).load(site.images[0]).into(itemView.imgSite)
             itemView.setOnClickListener { listener.onSiteClick(site) }
 
             if (site.hasBeenVisited) {

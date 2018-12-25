@@ -113,14 +113,13 @@ class SiteView : BaseView(), AnkoLogger {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
-            presenter.doActivityResult(requestCode, data)
+            presenter.doActivityResult(requestCode, resultCode, data)
         }
     }
 
     override fun onResume() {
         super.onResume()
         mapView.onResume()
-        presenter.doResartLocationUpdates()
     }
 
     override fun onDestroy() {
