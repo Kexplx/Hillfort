@@ -50,4 +50,6 @@
     <string name="nav_navigator">Navigator</string>
     <string name="nav_map">Map</string>
     <string name="title_navigationView">Hillfort</string>
+    <string name="nav_site_statistics">Site Statistics</string>
+    <string name="general">General</string>
 </resources>

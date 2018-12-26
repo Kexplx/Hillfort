@@ -13,22 +13,26 @@
                 android:icon="@drawable/ic_navigation_black_24dp"
                 android:checkable="true"/>
 
+        <item
+                android:id="@+id/nav_statistics"
+                android:title="@string/nav_site_statistics"
+                android:icon="@drawable/ic_data_usage_black_24dp"
+                android:checkable="true"/>
+
     </group>
 
-    <item android:title="General">
+    <item android:title="@string/general">
         <menu>
-            <item
-                    android:id="@+id/nav_settings"
-                    android:title="@string/menu_settings"
-                    android:icon="@drawable/ic_settings_black_24dp"
-                    android:checkable="true"/>
-
             <item
                     android:id="@+id/nav_logout"
                     android:title="@string/menu_logout"
                     android:icon="@drawable/ic_close_black_24dp"
                     android:checkable="true"/>
-
+            <item
+                    android:id="@+id/nav_settings"
+                    android:title="@string/menu_settings"
+                    android:icon="@drawable/ic_settings_black_24dp"
+                    android:checkable="true"/>
             <item
                     android:id="@+id/nav_credits"
                     android:icon="@drawable/info"
