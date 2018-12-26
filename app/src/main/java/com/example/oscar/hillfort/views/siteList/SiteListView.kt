@@ -30,7 +30,7 @@ class SiteListView : BaseView(), SiteListener {
         val actionbar: androidx.appcompat.app.ActionBar? = supportActionBar
         actionbar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.menu)
+            setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
         }
 
         txtFilter.addTextChangedListener(object : TextWatcher {
