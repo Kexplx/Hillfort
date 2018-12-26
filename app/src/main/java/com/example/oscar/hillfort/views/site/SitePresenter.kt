@@ -144,7 +144,7 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         showImagePicker(view!!, imageNumber)
     }
 
-    override fun doActivityResult(requestCode: Int, data: Intent) {
+    override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_0_REQUEST -> {
                 site.images[0] = data.data.toString(); view?.updateImage(0, site.images[0])

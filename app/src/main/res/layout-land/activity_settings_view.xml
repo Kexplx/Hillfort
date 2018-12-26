@@ -23,77 +23,99 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
-            android:layout_width="200dp"
-            android:layout_height="140dp" app:srcCompat="@drawable/location_2"
+            android:layout_width="196dp"
+            android:layout_height="114dp" app:srcCompat="@drawable/destination"
             android:id="@+id/imageView3" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="64dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="76dp" android:layout_marginStart="76dp"/>
+            android:layout_marginLeft="104dp" android:layout_marginStart="104dp"/>
     <ImageView
-            android:layout_width="200dp"
-            android:layout_height="140dp" app:srcCompat="@drawable/toools"
+            android:layout_width="199dp"
+            android:layout_height="111dp" app:srcCompat="@drawable/toools"
             android:id="@+id/imageView4" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="64dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="416dp" android:layout_marginStart="416dp"/>
+            android:layout_marginLeft="404dp" android:layout_marginStart="404dp"/>
     <TextView
             android:text="Number of Sites: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView" android:layout_marginTop="8dp"
+            android:id="@+id/textView" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="76dp" android:layout_marginStart="76dp" android:textSize="18sp"/>
+            android:layout_marginLeft="104dp" android:layout_marginStart="104dp" android:textSize="18sp"
+            android:textColor="@color/colorPrimary"/>
     <TextView
             android:text="Username: "
             android:layout_width="wrap_content"
-            android:layout_height="23dp"
+            android:layout_height="wrap_content"
             android:id="@+id/textView6"
-            android:textSize="18sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="416dp"
-            android:layout_marginStart="416dp" android:layout_marginTop="9dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            android:textSize="18sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="404dp"
+            android:layout_marginStart="404dp" android:layout_marginTop="24dp" android:textColor="@color/colorPrimary"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtNumberSitesVisited" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
             app:layout_constraintStart_toEndOf="@+id/textView3"
-            android:textSize="18sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="257dp"/>
+            android:textSize="18sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="242dp"
+            android:textColor="@color/colorPrimary"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtUsername"
             android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
             android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/textView6" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="212dp"/>
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            android:layout_marginTop="199dp" app:layout_constraintTop_toTopOf="parent"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtNumberOfSites"
             android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/textView" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="212dp" android:textSize="18sp"/>
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            android:textSize="18sp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="197dp"
+            android:textColor="@color/colorPrimary"/>
     <TextView
             android:text="Number of visited Sites: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="76dp" android:layout_marginStart="76dp" android:textSize="18sp"/>
+            android:layout_marginLeft="104dp" android:layout_marginStart="104dp" android:textSize="18sp"
+            android:textColor="@color/colorPrimary"/>
     <EditText android:layout_width="148dp" android:layout_height="41dp"
               android:hint="New Password"
               android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
               app:layout_constraintStart_toEndOf="@+id/btnUpdatePassword"
               android:id="@+id/txtPassword"
               android:textColor="@color/colorPrimary" android:inputType="textPassword"
-              android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+              tools:layout_editor_absoluteY="239dp"/>
     <Button
             android:id="@+id/btnUpdatePassword"
             android:layout_width="83dp"
             android:layout_height="36dp"
             android:text="Update"
+            android:enabled="false"
             android:textColor="@color/colorPrimaryDark"
             android:background="@color/card"
             android:textAllCaps="false"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="416dp"
-            android:layout_marginStart="416dp"
-            android:textSize="14sp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="404dp"
+            android:layout_marginStart="404dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" android:textSize="14sp"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="53dp"
+            android:layout_height="47dp"
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="507dp" android:layout_marginStart="507dp"/>
+    <View
+            android:id="@+id/divider2"
+            android:layout_width="1dp"
+            android:layout_height="309dp"
+            android:background="@color/colorToolBarIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="64dp" android:layout_marginLeft="41dp" android:layout_marginStart="41dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

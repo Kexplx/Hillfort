@@ -1,11 +1,15 @@
 package com.example.oscar.hillfort.views.Settings
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.views.BaseView
 import kotlinx.android.synthetic.main.activity_settings_view.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
+
 
 class SettingsView : BaseView() {
 
@@ -25,13 +29,31 @@ class SettingsView : BaseView() {
             txtNumberSitesVisited.text = presenter.doGetTotalNumberOfVisitedSites().toString()
         }
 
-        btnUpdatePassword.setOnClickListener {
-            if (txtPassword.length() > 5) {
-                async(UI) {
-                    presenter.doChangePassword(txtPassword.text.toString())
-                    txtPassword.setText("")
-                }
+        txtPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                btnUpdatePassword.isEnabled = s.toString().length > 7
             }
+        })
+
+        btnUpdatePassword.setOnClickListener {
+            this.runOnUiThread { progressBar.visibility = View.VISIBLE }
+
+            Thread(Runnable {
+                try {
+                    Thread.sleep(1000)
+                    presenter.doChangePassword(txtPassword.text.toString())
+                    this.runOnUiThread {
+                        progressBar.visibility = View.GONE
+                        txtPassword.setText("")
+                    }
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }).start()
         }
     }
 }
