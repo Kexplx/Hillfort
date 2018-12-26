@@ -6,16 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.models.SiteModel
+import com.example.oscar.hillfort.views.PasswordReset.PasswordResetView
 import com.example.oscar.hillfort.views.Settings.SettingsView
 import com.example.oscar.hillfort.views.location.LocationView
 import com.example.oscar.hillfort.views.login.LoginView
 import com.example.oscar.hillfort.views.map.SiteMapView
+import com.example.oscar.hillfort.views.navigation.NavigationView
 import com.example.oscar.hillfort.views.site.SiteView
 import com.example.oscar.hillfort.views.siteList.SiteListView
 import org.jetbrains.anko.AnkoLogger
 
 enum class VIEW {
-    LOCATION, SITE, MAPS, LIST, SETTINGS, LOGIN
+    LOCATION, SITE, MAPS, LIST, SETTINGS, LOGIN, RESETPASSWORD, NAVIGATION
 }
 
 abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -31,6 +33,8 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.LIST -> intent = Intent(this, SiteListView::class.java)
             VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
+            VIEW.RESETPASSWORD -> intent = Intent(this, PasswordResetView::class.java)
+            VIEW.NAVIGATION -> intent = Intent(this, NavigationView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)

@@ -120,6 +120,7 @@ class SiteView : BaseView(), AnkoLogger {
     override fun onResume() {
         super.onResume()
         mapView.onResume()
+        presenter.doResartLocationUpdates()
     }
 
     override fun onDestroy() {

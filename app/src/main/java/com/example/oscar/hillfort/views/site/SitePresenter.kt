@@ -30,8 +30,6 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     val LOCATION_REQUEST = 2
 
-    var locationHasBeenSet = false
-
     var site = SiteModel()
     var defaultLocation = Location(52.245696, -7.139102, 15f)
     var edit = false
@@ -72,18 +70,17 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     @SuppressLint("MissingPermission")
     fun doResartLocationUpdates() {
-        if (!locationHasBeenSet) {
-            var locationCallback = object : LocationCallback() {
-                override fun onLocationResult(locationResult: LocationResult?) {
-                    if (locationResult != null && locationResult.locations != null && !locationHasBeenSet) {
-                        val l = locationResult.locations.last()
-                        locationUpdate(l.latitude, l.longitude)
-                    }
+        var locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult != null) {
+                    val l = locationResult.locations.last()
+                    locationUpdate(l.latitude, l.longitude)
                 }
             }
-            if (!edit) {
-                locationService.requestLocationUpdates(locationRequest, locationCallback, null)
-            }
+        }
+        if (!edit) {
+            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
+            locationService.removeLocationUpdates(locationCallback)
         }
     }
 
@@ -165,7 +162,6 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
                 site.lng = location.lng
                 site.zoom = location.zoom
                 locationUpdate(site.lat, site.lng)
-                locationHasBeenSet = true
             }
         }
     }

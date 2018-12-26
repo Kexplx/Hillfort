@@ -19,7 +19,7 @@ class SettingsView : BaseView() {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_view)
-        super.init(toolbarSettings, upEnabled = true)
+        init(toolbarSettings, upEnabled = true)
 
         presenter = initPresenter(SettingsPresenter(this)) as SettingsPresenter
 
