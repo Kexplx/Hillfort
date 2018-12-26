@@ -18,7 +18,7 @@
     <string name="title_activity_site">Hillfort</string>
     <string name="title_activity_edit_location">Hillfort</string>
     <string name="title_activity_site_maps">Hillfort</string>
-    <string name="title_activity_settings">Hillfort</string>
+    <string name="label_activity_settings">Hillfort</string>
     <string name="visited_text">Visited:</string>
     <string name="lng_text">Lng:</string>
     <string name="lat_text">Lat:</string>
@@ -28,7 +28,7 @@
     <string name="btn_signUp">Sign Up</string>
     <string name="btn_log_in">Log In</string>
     <string name="hint_password">Password</string>
-    <string name="hint_email">Email</string>
+    <string name="hint_email">E-Mail</string>
     <string name="toolbar_titleText">Hillfort</string>
     <string name="siteView_toolbar_cancel">Cancel</string>
     <string name="siteView_toolbar_delete">Delete</string>
@@ -42,4 +42,12 @@
     <string name="action_settings">Settings</string>
     <string name="user_settings">Settings</string>
     <string name="credits">Credits</string>
+    <string name="label_acitvity_passwordReset">Hillfort</string>
+    <string name="receive_mail">Receive Mail</string>
+    <string name="registerd_e_mail">Registerd E-Mail</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_logout">Logout</string>
+    <string name="nav_navigator">Navigator</string>
+    <string name="nav_map">Map</string>
+    <string name="title_navigationView">Hillfort</string>
 </resources>

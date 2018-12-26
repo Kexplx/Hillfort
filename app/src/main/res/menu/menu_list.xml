@@ -2,18 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-            android:id="@+id/item_logout"
-            android:icon="@drawable/logout_6"
-            android:title="@string/logout"
-            app:showAsAction="never|always"/>
-    <item
-            android:id="@+id/item_map"
-            android:icon="@drawable/location_2"
-            android:title="@string/open_map"
-            app:showAsAction="always"/>
-    <item
             android:id="@+id/item_add"
-            android:icon="@drawable/list"
+            android:icon="@drawable/ic_add_black_24dp"
             android:title="@string/menu_add"
             app:showAsAction="always"/>
 </menu>

@@ -3,14 +3,37 @@
 >
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/user_settings" android:enabled="true" android:checkable="true"
-                android:visible="true"/>
+                android:id="@+id/nav_map"
+                android:title="@string/nav_map"
+                android:icon="@drawable/ic_map_black_24dp"
+                android:checkable="true"/>
         <item
-                android:id="@+id/nav_credits"
-                android:icon="@drawable/info"
-                android:title="@string/credits" android:checkable="true" android:enabled="true"
-                android:visible="true"/>
+                android:id="@+id/nav_navigator"
+                android:title="@string/nav_navigator"
+                android:icon="@drawable/ic_navigation_black_24dp"
+                android:checkable="true"/>
+
     </group>
+
+    <item android:title="General">
+        <menu>
+            <item
+                    android:id="@+id/nav_settings"
+                    android:title="@string/menu_settings"
+                    android:icon="@drawable/ic_settings_black_24dp"
+                    android:checkable="true"/>
+
+            <item
+                    android:id="@+id/nav_logout"
+                    android:title="@string/menu_logout"
+                    android:icon="@drawable/ic_close_black_24dp"
+                    android:checkable="true"/>
+
+            <item
+                    android:id="@+id/nav_credits"
+                    android:icon="@drawable/info"
+                    android:title="@string/credits"
+                    android:checkable="true"/>
+        </menu>
+    </item>
 </menu>

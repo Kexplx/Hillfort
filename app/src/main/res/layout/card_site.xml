@@ -21,16 +21,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtLng"/>
         <CheckBox
                 android:button="@android:drawable/btn_star"
-                android:layout_width="34dp"
-                android:layout_height="39dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/favorite"
                 android:clickable="false"
                 android:background="@android:color/transparent"
                 android:layout_gravity="center"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="15dp" app:layout_constraintEnd_toStartOf="@+id/imgSite"
-                android:layout_marginEnd="9dp" android:layout_marginRight="9dp" android:checked="true"
-                android:visibility="gone"/>
+                android:layout_marginTop="46dp" app:layout_constraintEnd_toStartOf="@+id/imgSite"
+                android:layout_marginEnd="4dp" android:layout_marginRight="4dp" android:checked="true"
+                android:visibility="visible"/>
         <TextView
                 android:text="@string/lat_text"
                 android:layout_width="28dp"
@@ -45,9 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" app:layout_constraintTop_toTopOf="parent"
+                android:textSize="22sp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+                android:layout_marginLeft="20dp" android:layout_marginStart="20dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="16dp" android:layout_alignBottom="@+id/imgSite"
@@ -88,8 +88,8 @@
                 android:id="@+id/chkHasBeenVisited"
                 android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@+id/txtSiteName"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp" android:layout_alignLeft="@+id/txtSiteName"/>
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp" android:layout_alignLeft="@+id/txtSiteName"/>
         <EditText
                 android:layout_width="87dp"
                 android:layout_height="30dp"
@@ -105,5 +105,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtSiteName"
                 app:layout_constraintStart_toEndOf="@+id/chkHasBeenVisited" android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"/>
+        <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp" app:srcCompat="@drawable/ic_share_black_24dp"
+                android:id="@+id/btnShare"
+                android:foregroundGravity="fill"
+                android:tint="@color/colorToolBarIcon"
+                android:background="@color/card"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/imgSite"
+                android:layout_marginEnd="4dp" android:layout_marginRight="4dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

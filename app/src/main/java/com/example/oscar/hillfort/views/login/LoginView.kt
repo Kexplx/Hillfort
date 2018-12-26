@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.views.BaseView
+import com.example.oscar.hillfort.views.VIEW
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 
@@ -27,6 +28,10 @@ class LoginView : BaseView() {
             } else {
                 presenter.doSignUp(email, password)
             }
+        }
+
+        txtForgotPassword.setOnClickListener {
+            navigateTo(VIEW.RESETPASSWORD)
         }
 
         logIn.setOnClickListener {
