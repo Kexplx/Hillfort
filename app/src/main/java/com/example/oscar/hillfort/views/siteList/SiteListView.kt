@@ -12,7 +12,6 @@ import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.models.SiteListener
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
-import com.example.oscar.hillfort.views.VIEW
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_site_list.*
 import java.util.Collections.sort
@@ -31,7 +30,7 @@ class SiteListView : BaseView(), SiteListener {
         val actionbar: androidx.appcompat.app.ActionBar? = supportActionBar
         actionbar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.menu)
+            setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
         }
 
         txtFilter.addTextChangedListener(object : TextWatcher {
@@ -57,11 +56,12 @@ class SiteListView : BaseView(), SiteListener {
             mDrawerLayout.closeDrawers()
 
             when (menuItem.itemId) {
-                R.id.nav_settings -> {
-                    navigateTo(VIEW.SETTINGS)
-                }
+                R.id.nav_settings -> presenter.doShowSettings()
                 R.id.nav_credits -> {
                 }
+                R.id.nav_logout -> presenter.doLogout()
+                R.id.nav_map -> presenter.doShowSitesMap()
+                R.id.nav_navigator -> presenter.doShowNavigator()
             }
             true
         }
@@ -86,8 +86,6 @@ class SiteListView : BaseView(), SiteListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> presenter.doAddSite()
-            R.id.item_map -> presenter.doShowSitesMap()
-            R.id.item_logout -> presenter.doLogout()
             else -> mDrawerLayout.openDrawer(GravityCompat.START)
         }
         return super.onOptionsItemSelected(item)
