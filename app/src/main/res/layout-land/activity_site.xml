@@ -33,7 +33,7 @@
 
         <EditText
                 android:id="@+id/txtSiteName"
-                android:layout_width="229dp"
+                android:layout_width="342dp"
                 android:layout_height="49dp"
                 android:ems="10"
                 android:hint="@string/site_name"
@@ -111,19 +111,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
                 android:layout_marginTop="13dp" app:layout_constraintTop_toBottomOf="@+id/txtSiteDescription"/>
-        <ImageButton
-                android:background="@android:color/transparent"
-                android:layout_width="180dp"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:layout_height="90dp" app:srcCompat="@drawable/picture"
-                android:id="@+id/imgBtn2"
-                tools:ignore="VectorDrawableCompat"
-                android:cropToPadding="true"
-                android:contentDescription="@string/todo"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="11dp" android:layout_marginStart="11dp" android:layout_marginTop="7dp"
-                app:layout_constraintTop_toBottomOf="@+id/imgBtn0"/>
         <EditText
                 android:layout_width="145dp"
                 android:layout_height="41dp"
@@ -147,7 +134,7 @@
                 android:textAllCaps="false" android:textStyle="italic"/>
         <com.google.android.gms.maps.MapView
                 android:layout_width="251dp"
-                android:layout_height="165dp"
+                android:layout_height="162dp"
                 android:id="@+id/mapView"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
