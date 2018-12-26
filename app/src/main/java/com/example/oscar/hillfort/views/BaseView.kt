@@ -47,6 +47,7 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         return presenter
     }
 
+
     fun init(toolbar: Toolbar, upEnabled: Boolean) {
         toolbar.title = getString(R.string.toolbar_titleText)
         setSupportActionBar(toolbar)

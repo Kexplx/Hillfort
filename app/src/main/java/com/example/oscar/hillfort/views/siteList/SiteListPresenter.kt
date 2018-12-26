@@ -33,6 +33,14 @@ class SiteListPresenter(view: SiteListView) : BasePresenter(view) {
         view?.navigateTo(VIEW.MAPS)
     }
 
+    fun doShowSettings() {
+        view?.navigateTo(VIEW.SETTINGS)
+    }
+
+    fun doShowNavigator() {
+        view?.navigateTo(VIEW.NAVIGATION)
+    }
+
     fun doLogout() {
         FirebaseAuth.getInstance().signOut()
         app.sites.clear()

@@ -3,6 +3,7 @@ package com.example.oscar.hillfort.views.navigation
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toolbar
 import com.example.oscar.hillfort.R
@@ -36,9 +37,16 @@ class NavigationView() : BaseView(), GoogleMap.OnMarkerClickListener, Parcelable
         }
     }
 
-    // If Marker is clicked, this function is triggered
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            android.R.id.home -> presenter.stopLocationUpdates()
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     override fun onMarkerClick(marker: Marker): Boolean {
-        //presenter.doMarkerSelected(marker)
+//        presenter.doMarkerSelected(marker)
         return true
     }
 
@@ -74,6 +82,11 @@ class NavigationView() : BaseView(), GoogleMap.OnMarkerClickListener, Parcelable
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun onBackPressed() {
+        presenter.stopLocationUpdates()
+        super.onBackPressed()
     }
 
     companion object CREATOR : Parcelable.Creator<NavigationView> {

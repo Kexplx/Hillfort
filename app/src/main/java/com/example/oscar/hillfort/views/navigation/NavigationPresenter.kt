@@ -26,6 +26,7 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
     var defaultLocation = Location(52.245696, -7.139102, 15f)
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     val locationRequest = createDefaultLocationRequest()
+    var locationCallback = LocationCallback()
 
     lateinit var sites: List<SiteModel>
 
@@ -58,7 +59,7 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
 
     @SuppressLint("MissingPermission")
     fun doRestartLocationUpdates() {
-        val locationCallback = object : LocationCallback() {
+        locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 if (locationResult != null) {
                     val l = locationResult.locations.last()
@@ -71,6 +72,10 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doConfigureMap(m: GoogleMap) {
         map = m
+    }
+
+    fun stopLocationUpdates() {
+        locationService.removeLocationUpdates(locationCallback)
     }
 
     fun locationUpdate(location: Location) {
