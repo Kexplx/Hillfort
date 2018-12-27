@@ -1,53 +1,62 @@
 package com.example.oscar.hillfort.views.navigation
 
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toolbar
+import com.bumptech.glide.Glide
 import com.example.oscar.hillfort.R
+import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BaseView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_navigation.*
 
-class NavigationView() : BaseView(), GoogleMap.OnMarkerClickListener, Parcelable {
+class NavigationView : BaseView(), GoogleMap.OnMarkerClickListener {
 
-    private var toolbarNavigation: Toolbar? = null
     private var mapView: MapView? = null
 
     lateinit var presenter: NavigationPresenter
-
-    constructor(parcel: Parcel) : this() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
 
         init(toolbarNavigator, true)
-        presenter = initPresenter(NavigationPresenter(this)) as NavigationPresenter
 
         mapView = findViewById<View>(R.id.mapView) as MapView
 
         mapView!!.onCreate(savedInstanceState)
         mapView!!.getMapAsync {
             presenter.doConfigureMap(it)
+            it.setOnMarkerClickListener(this)
         }
+
+        presenter = initPresenter(NavigationPresenter(this)) as NavigationPresenter
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
-            android.R.id.home -> presenter.stopLocationUpdates()
+            android.R.id.home -> {
+                presenter.stopLocationUpdates(); presenter.firstZoomSet = false
+            }
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-//        presenter.doMarkerSelected(marker)
+        presenter.setNewDestination(marker)
         return true
+    }
+
+    override fun updateCardWithDestination(site: SiteModel, distanceInMeters: Double) {
+        txtHint.visibility = View.GONE
+        currentTitle.text = site.title
+        currentDescription.text = site.description
+        txtCurrrentDistance.text = distanceInMeters.toInt().toString()
+        currentDistance.text = getString(R.string.distance_in_meters)
+        Glide.with(this).load(site.images[0]).into(imageView)
     }
 
     override fun onDestroy() {
@@ -68,7 +77,6 @@ class NavigationView() : BaseView(), GoogleMap.OnMarkerClickListener, Parcelable
     override fun onResume() {
         super.onResume()
         mapView!!.onResume()
-        presenter.doRestartLocationUpdates()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -76,26 +84,8 @@ class NavigationView() : BaseView(), GoogleMap.OnMarkerClickListener, Parcelable
         mapView!!.onSaveInstanceState(outState)
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
     override fun onBackPressed() {
         presenter.stopLocationUpdates()
         super.onBackPressed()
-    }
-
-    companion object CREATOR : Parcelable.Creator<NavigationView> {
-        override fun createFromParcel(parcel: Parcel): NavigationView {
-            return NavigationView(parcel)
-        }
-
-        override fun newArray(size: Int): Array<NavigationView?> {
-            return arrayOfNulls(size)
-        }
     }
 }

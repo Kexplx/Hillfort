@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="115dp"
         android:layout_marginBottom="8dp"
-        android:elevation="24dp" app:cardBackgroundColor="@color/card">
+        android:elevation="24dp" app:cardBackgroundColor="@color/colorAccent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

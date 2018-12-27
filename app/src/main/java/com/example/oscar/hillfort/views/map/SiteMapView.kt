@@ -33,7 +33,7 @@ class SiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
     override fun showSite(site: SiteModel) {
         currentTitle.text = site.title
-        currentDescripton.text = site.description
+        currentDistance.text = site.description
         Glide.with(this).load(site.images[0]).into(imageView)
     }
 

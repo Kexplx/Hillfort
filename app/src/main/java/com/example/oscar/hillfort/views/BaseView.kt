@@ -68,6 +68,7 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+    open fun updateCardWithDestination(site: SiteModel, distanceInMeters: Double) {}
     open fun updateImage(code: Int, imagePath: String) {}
     open fun showSite(site: SiteModel) {}
     open fun showSites(sites: List<SiteModel>) {}

@@ -60,4 +60,5 @@
     <string name="new_password">New Password</string>
     <string name="update">Update</string>
     <string name="hillfort_logo">hillfort Logo</string>
+    <string name="distance_in_meters">Meters Away:</string>
 </resources>
