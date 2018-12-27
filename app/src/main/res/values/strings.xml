@@ -18,7 +18,7 @@
     <string name="title_activity_site">Hillfort</string>
     <string name="title_activity_edit_location">Hillfort</string>
     <string name="title_activity_site_maps">Hillfort</string>
-    <string name="label_activity_settings">Hillfort</string>
+    <string name="label_activity_settings">Hillfort - Settings</string>
     <string name="visited_text">Visited:</string>
     <string name="lng_text">Lng:</string>
     <string name="lat_text">Lat:</string>
@@ -52,4 +52,12 @@
     <string name="title_navigationView">Hillfort</string>
     <string name="nav_site_statistics">Site Statistics</string>
     <string name="general">General</string>
+    <string name="statistics_logo">Hillfort Logo</string>
+    <string name="number_of_sites">Number of Sites:</string>
+    <string name="username">Username:</string>
+    <string name="number_of_favourites">Number of favourites:</string>
+    <string name="number_of_visited_sites">Number of visited Sites:</string>
+    <string name="new_password">New Password</string>
+    <string name="update">Update</string>
+    <string name="hillfort_logo">hillfort Logo</string>
 </resources>

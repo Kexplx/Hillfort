@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.PasswordReset.PasswordResetView
 import com.example.oscar.hillfort.views.Settings.SettingsView
@@ -49,7 +48,6 @@ abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
 
     fun init(toolbar: Toolbar, upEnabled: Boolean) {
-        toolbar.title = getString(R.string.toolbar_titleText)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }

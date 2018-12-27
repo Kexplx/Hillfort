@@ -18,106 +18,136 @@
                 app:theme="@style/AppTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="@string/toolbar_titleText"
                 app:titleTextColor="@color/colorPrimary"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageView
-            android:layout_width="196dp"
-            android:layout_height="114dp" app:srcCompat="@drawable/destination"
-            android:id="@+id/imageView3" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="72dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="112dp" android:layout_marginStart="112dp"/>
-    <ImageView
-            android:layout_width="199dp"
-            android:layout_height="111dp" app:srcCompat="@drawable/toools"
-            android:id="@+id/imageView4" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="336dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="100dp" android:layout_marginStart="100dp"/>
     <TextView
-            android:text="Number of Sites: "
+            android:text="@string/number_of_sites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView" android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="104dp" android:layout_marginStart="104dp" android:textSize="18sp"
-            android:textColor="@color/colorPrimary"/>
+            android:id="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="64dp" android:layout_marginStart="64dp" android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/divider3"/>
     <TextView
-            android:text="Username: "
+            android:text="@string/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            android:textSize="18sp" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="65dp"
-            android:layout_marginStart="65dp" android:layout_marginTop="20dp" android:textColor="@color/colorPrimary"/>
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="64dp" android:layout_marginStart="64dp"
+            app:layout_constraintTop_toBottomOf="@+id/divider" android:layout_marginTop="36dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtNumberSitesVisited" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
+            android:id="@+id/txtNumberSitesVisited"
             android:textSize="18sp"
-            android:textColor="@color/colorPrimary" android:layout_marginTop="250dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/textView3" android:layout_marginTop="336dp"
             app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtNumberFavSites"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            android:layout_marginTop="381dp" app:layout_constraintTop_toTopOf="parent"/>
     <TextView
             android:id="@+id/txtUsername"
             android:textSize="18sp"
-            android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+            android:textColor="@color/buttonRed"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/textView6"
-            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+            android:layout_marginTop="478dp" app:layout_constraintTop_toTopOf="parent"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtNumberOfSites"
-            android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@+id/textView"
             android:textSize="18sp"
-            android:textColor="@color/colorPrimary" android:layout_marginTop="205dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@+id/textView" android:layout_marginTop="292dp"
             app:layout_constraintTop_toTopOf="parent"/>
     <TextView
-            android:text="Number of visited Sites: "
+            android:text="@string/number_of_visited_sites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="104dp" android:layout_marginStart="104dp" android:textSize="18sp"
+            android:layout_marginLeft="64dp" android:layout_marginStart="64dp" android:textSize="18sp"
             android:textColor="@color/colorPrimary"/>
-    <EditText android:layout_width="188dp" android:layout_height="41dp"
-              android:hint="New Password"
-              android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
-              app:layout_constraintStart_toEndOf="@+id/btnUpdatePassword" android:layout_marginTop="68dp"
-              app:layout_constraintTop_toBottomOf="@+id/imageView4" android:id="@+id/txtPassword"
+    <TextView
+            android:text="@string/number_of_favourites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="64dp" android:layout_marginStart="64dp" android:textSize="18sp"
+            android:textColor="@color/colorPrimary" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+    <EditText android:layout_width="283dp" android:layout_height="41dp"
+              android:hint="@string/new_password"
+              android:drawablePadding="10dp"
+              android:id="@+id/txtPassword"
               android:textColor="@color/colorPrimary" android:inputType="textPassword"
+              android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+              android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/textView6"
+              app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="64dp"
+              android:layout_marginStart="64dp" android:drawableStart="@drawable/ic_lock_outline_black_24dp"
     />
     <Button
             android:id="@+id/btnUpdatePassword"
-            android:layout_width="83dp"
+            android:layout_width="283dp"
             android:layout_height="36dp"
-            android:text="Update"
+            android:text="@string/update"
             android:enabled="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@color/card"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/buttonRed"
             android:textAllCaps="false"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="65dp"
-            android:layout_marginStart="65dp"
-            android:textSize="18sp" android:layout_marginTop="23dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"/>
-    <View
-            android:id="@+id/divider"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="@color/colorToolBarIcon"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginLeft="64dp" android:layout_marginStart="64dp" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword"/>
     <ProgressBar
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:id="@+id/progressBar" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toEndOf="@+id/txtPassword"
-            android:layout_marginTop="207dp" app:layout_constraintTop_toBottomOf="@+id/divider"
+            android:layout_width="43dp"
+            android:layout_height="41dp"
+            android:id="@+id/progressBar"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp" app:layout_constraintStart_toEndOf="@+id/txtPassword"
+            android:layout_marginTop="76dp" app:layout_constraintTop_toBottomOf="@+id/divider"
             android:visibility="gone"/>
+    <ImageView
+            android:layout_width="226dp"
+            android:layout_height="145dp" app:srcCompat="@drawable/settings"
+            android:id="@+id/imageView6" android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="92dp" android:layout_marginStart="92dp"
+            android:contentDescription="@string/hillfort_logo"/>
+    <View
+            android:id="@+id/divider"
+            android:layout_width="330dp"
+            android:layout_height="1dp"
+            android:background="@color/card_Favorite"
+            android:layout_marginTop="36dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="39dp"
+            android:layout_marginRight="39dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="40dp" android:layout_marginStart="40dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <View
+            android:id="@+id/divider3"
+            android:layout_width="330dp"
+            android:layout_height="1dp"
+            android:background="@color/card_Favorite"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/imageView6"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

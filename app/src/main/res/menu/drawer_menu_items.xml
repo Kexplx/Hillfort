@@ -13,12 +13,6 @@
                 android:icon="@drawable/ic_navigation_black_24dp"
                 android:checkable="true"/>
 
-        <item
-                android:id="@+id/nav_statistics"
-                android:title="@string/nav_site_statistics"
-                android:icon="@drawable/ic_data_usage_black_24dp"
-                android:checkable="true"/>
-
     </group>
 
     <item android:title="@string/general">
