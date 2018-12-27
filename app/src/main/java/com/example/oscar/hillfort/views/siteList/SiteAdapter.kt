@@ -1,8 +1,10 @@
 package com.example.oscar.hillfort.views.siteList
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.models.SiteListener
@@ -34,6 +36,20 @@ class SiteAdapter constructor(
     class MainHolder constructor(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         fun bind(site: SiteModel, listener: SiteListener) {
+
+            itemView.btnShare.setOnClickListener {
+                var lineSeperator = System.getProperty("line.separator")
+                val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
+                sharingIntent.type = "text/plain"
+                var shareBody = site.title + " (" + site.lat + "/" + site.lng + ")" +
+                        lineSeperator + site.description + lineSeperator + site.notes
+                val shareSub = "Hillfort App: Site Description"
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub)
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody)
+                Intent.createChooser(sharingIntent, "Site Desription")
+                ContextCompat.startActivity(itemView.context, sharingIntent, null)
+            }
+
             itemView.txtSiteName.text = site.title
             itemView.txtLat.text = site.lat.toString().take(6)
             itemView.txtLng.text = site.lng.toString().take(6)
