@@ -29,10 +29,6 @@ class SiteListPresenter(view: SiteListView) : BasePresenter(view) {
         view?.navigateTo(VIEW.SITE, 0, "site_edit", site)
     }
 
-    fun doShowSitesMap() {
-        view?.navigateTo(VIEW.MAPS)
-    }
-
     fun doShowSettings() {
         view?.navigateTo(VIEW.SETTINGS)
     }

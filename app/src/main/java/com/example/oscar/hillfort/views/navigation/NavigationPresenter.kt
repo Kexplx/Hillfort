@@ -43,25 +43,6 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-//    @SuppressLint("MissingPermission")
-//    fun doSetCurrentLocation() {
-//        locationService.lastLocation.addOnSuccessListener {
-//            if (it != null) {
-//                locationUpdate(Location(it.latitude, it.longitude))
-//            } else {
-//                locationUpdate(Location(defaultLocation.lat, defaultLocation.lng))
-//            }
-//        }
-//    }
-
-//    override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-//        if (isPermissionGranted(requestCode, grantResults)) {
-//            doSetCurrentLocation()
-//        } else {
-//            locationUpdate(defaultLocation)
-//        }
-//    }
-
     @SuppressLint("MissingPermission")
     fun doRestartLocationUpdates() {
         locationCallback = object : LocationCallback() {

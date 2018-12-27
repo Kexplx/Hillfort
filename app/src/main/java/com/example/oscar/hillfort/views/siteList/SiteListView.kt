@@ -57,7 +57,6 @@ class SiteListView : BaseView(), SiteListener {
 
             when (menuItem.itemId) {
                 R.id.nav_settings -> presenter.doShowSettings()
-                R.id.nav_map -> presenter.doShowSitesMap()
                 R.id.nav_navigator -> presenter.doShowNavigator()
                 R.id.nav_logout -> presenter.doLogout()
                 R.id.nav_credits -> {
