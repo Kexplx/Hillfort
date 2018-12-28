@@ -7,14 +7,14 @@
     <color name="colorToolBarText">#6971A1</color>
     <color name="buttonRed">#D8827C</color>
     <color name="buttonGreen">#99DB9C</color>
-    <color name="buttonPurple">#93C6E9</color>
+    <color name="buttonPurple">#7897F3</color>
     <color name="card">#e9ebed</color>
     <color name="bluish">#b7c8d9</color>
     <color name="card_Favorite">#535351</color>
     <color name="ratingBarUnrated">#EEE0B5</color>
     <color name="ratingBarRated">#E9B30A</color>
     <color name="colorButtonGreen">#06CC93</color>
-    <color name="colorButtonBlue">#F0CDAE</color>
+    <color name="colorButtonBlue">#7897F3</color>
     <color name="colorButtonBlu1">#edd9c7</color>
     <color name="green">#097b07</color>
 </resources>

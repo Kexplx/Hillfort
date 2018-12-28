@@ -51,8 +51,7 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
             bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
             parcelFileDescriptor.close()
         } catch (e: Exception) {
-            val myBitmap = BitmapFactory.decodeFile(path)
-            return myBitmap
+            return BitmapFactory.decodeFile(path)
         }
     }
     return bitmap
@@ -85,17 +84,11 @@ fun createImageFile(parent: Activity): File {
     val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
     val imageFileName = "JPEG_" + timeStamp + "_"
     val storageDir = parent.cacheDir
-//    parent.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     val image = File.createTempFile(
         imageFileName,
         ".jpg",
         storageDir
     )
 
-    mCurrentPhotoPath = image.absolutePath
     return image
-}
-
-private fun displayMessage(context: Context, message: String) {
-    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }

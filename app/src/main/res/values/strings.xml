@@ -61,4 +61,6 @@
     <string name="update">Update</string>
     <string name="hillfort_logo">hillfort Logo</string>
     <string name="distance_in_meters">Meters Away:</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="click_on_a_site_s_marker_to_start_navigation">Click on a Site\'s Marker to Start Navigation</string>
 </resources>
