@@ -2,10 +2,8 @@ package com.example.oscar.hillfort.views.site
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import com.example.oscar.hillfort.helpers.checkLocationPermissions
-import com.example.oscar.hillfort.helpers.createDefaultLocationRequest
-import com.example.oscar.hillfort.helpers.isPermissionGranted
-import com.example.oscar.hillfort.helpers.showImagePicker
+import android.graphics.Bitmap
+import com.example.oscar.hillfort.helpers.*
 import com.example.oscar.hillfort.models.Location
 import com.example.oscar.hillfort.models.SiteModel
 import com.example.oscar.hillfort.views.BasePresenter
@@ -20,6 +18,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+
 
 class SitePresenter(view: SiteView) : BasePresenter(view) {
 
@@ -70,7 +72,7 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     @SuppressLint("MissingPermission")
     fun doResartLocationUpdates() {
-        var locationCallback = object : LocationCallback() {
+        val locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 if (locationResult != null) {
                     val l = locationResult.locations.last()
@@ -126,10 +128,6 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         }
     }
 
-    fun doCancel() {
-        view?.finish()
-    }
-
     fun doDelete() {
         async(UI) {
             app.sites.delete(site)
@@ -137,23 +135,61 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
         }
     }
 
-    fun doSelectImage(imageNumber: Int) {
+    fun doSelectImageFromCamera(imageNumber: Int) {
+        if (checkCameraPermissions(view!!)) {
+            dispatchTakePictureIntent(view!!, imageNumber)
+        }
+    }
+
+    fun doSelectImageFromGallery(imageNumber: Int) {
         showImagePicker(view!!, imageNumber)
     }
 
+    private fun saveBitmap(bitmap: Bitmap?, file: File) {
+        if (bitmap != null) {
+            try {
+                var outputStream: FileOutputStream? = null
+                try {
+                    outputStream = FileOutputStream(file)
+                    bitmap.compress(
+                        Bitmap.CompressFormat.JPEG,
+                        100,
+                        outputStream
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                } finally {
+                    try {
+                        outputStream?.close()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        var path: File? = null
+        if (data.data == null) {
+            val bm = data.extras.get("data") as Bitmap
+            path = createImageFile(view!!)
+            saveBitmap(bm, path)
+        }
         when (requestCode) {
             IMAGE_0_REQUEST -> {
-                site.images[0] = data.data.toString(); view?.updateImage(0, site.images[0])
+                site.images[0] = data.data?.toString() ?: path!!.absolutePath; view?.updateImage(0, site.images[0])
             }
             IMAGE_1_REQUEST -> {
-                site.images[1] = data.data.toString(); view?.updateImage(1, site.images[1])
+                site.images[1] = data.data?.toString() ?: path!!.absolutePath; view?.updateImage(1, site.images[1])
             }
             IMAGE_2_REQUEST -> {
-                site.images[2] = data.data.toString(); view?.updateImage(2, site.images[2])
+                site.images[2] = data.data?.toString() ?: path!!.absolutePath; view?.updateImage(2, site.images[2])
             }
             IMAGE_3_REQUEST -> {
-                site.images[3] = data.data.toString(); view?.updateImage(3, site.images[3])
+                site.images[3] = data.data?.toString() ?: path!!.absolutePath; view?.updateImage(3, site.images[3])
             }
 
             LOCATION_REQUEST -> {
@@ -162,6 +198,7 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
                 site.lng = location.lng
                 site.zoom = location.zoom
                 locationUpdate(site.lat, site.lng)
+
             }
         }
     }

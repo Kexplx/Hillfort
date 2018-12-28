@@ -3,12 +3,22 @@ package com.example.oscar.hillfort.helpers
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.example.oscar.hillfort.R
+import java.io.File
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
+
+var mCurrentPhotoPath: String = ""
+private var photoFile: File? = null
+val REQUEST_CAMERA_PERMISSIONS_REQUEST_CODE = 35
 
 fun showImagePicker(parent: Activity, id: Int) {
     val intent = Intent()
@@ -41,7 +51,51 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
             bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
             parcelFileDescriptor.close()
         } catch (e: Exception) {
+            val myBitmap = BitmapFactory.decodeFile(path)
+            return myBitmap
         }
     }
     return bitmap
+}
+
+fun checkCameraPermissions(activity: Activity): Boolean {
+    return if (ActivityCompat.checkSelfPermission(
+            activity,
+            android.Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+    ) {
+        true
+    } else {
+        ActivityCompat.requestPermissions(
+            activity,
+            arrayOf(android.Manifest.permission.CAMERA),
+            REQUEST_CAMERA_PERMISSIONS_REQUEST_CODE
+        )
+        false
+    }
+}
+
+fun dispatchTakePictureIntent(parent: Activity, imageNumber: Int) {
+    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+    parent.startActivityForResult(intent, imageNumber)
+}
+
+@Throws(IOException::class)
+fun createImageFile(parent: Activity): File {
+    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+    val imageFileName = "JPEG_" + timeStamp + "_"
+    val storageDir = parent.cacheDir
+//    parent.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    val image = File.createTempFile(
+        imageFileName,
+        ".jpg",
+        storageDir
+    )
+
+    mCurrentPhotoPath = image.absolutePath
+    return image
+}
+
+private fun displayMessage(context: Context, message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }

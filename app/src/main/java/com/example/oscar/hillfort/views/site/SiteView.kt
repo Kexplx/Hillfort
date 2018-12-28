@@ -1,5 +1,6 @@
 package com.example.oscar.hillfort.views.site
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -35,10 +36,10 @@ class SiteView : BaseView(), AnkoLogger {
             }
         }
 
-        imgBtn0.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_0_REQUEST) }
-        imgBtn1.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_1_REQUEST) }
-        imgBtn2.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_2_REQUEST) }
-        imgBtn3.setOnClickListener { presenter.doSelectImage(presenter.IMAGE_3_REQUEST) }
+        imgBtn0.setOnClickListener { showPictureDialog(presenter.IMAGE_0_REQUEST) }
+        imgBtn1.setOnClickListener { showPictureDialog(presenter.IMAGE_1_REQUEST) }
+        imgBtn2.setOnClickListener { showPictureDialog(presenter.IMAGE_2_REQUEST) }
+        imgBtn3.setOnClickListener { showPictureDialog(presenter.IMAGE_3_REQUEST) }
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
@@ -46,6 +47,21 @@ class SiteView : BaseView(), AnkoLogger {
             presenter.doConfigureMap(map)
             it.setOnMapClickListener { presenter.doSetLocation() }
         }
+    }
+
+    fun showPictureDialog(imageNumber: Int) {
+        val pictureDialog = AlertDialog.Builder(this, R.style.AlertDialog)
+        pictureDialog.setTitle("Select Action")
+        val pictureDialogItems = arrayOf("Select photo from gallery", "Capture photo from camera")
+        pictureDialog.setItems(
+            pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> presenter.doSelectImageFromGallery(imageNumber)
+                1 -> presenter.doSelectImageFromCamera(imageNumber)
+            }
+        }
+        pictureDialog.show()
     }
 
     override fun showSite(site: SiteModel) {

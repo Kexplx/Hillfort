@@ -41,7 +41,6 @@ class NavigationView : BaseView(), GoogleMap.OnMarkerClickListener {
                 presenter.stopLocationUpdates(); presenter.firstZoomSet = false
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 
