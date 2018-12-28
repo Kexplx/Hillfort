@@ -1,9 +1,11 @@
 package com.example.oscar.hillfort.views.PasswordReset
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import com.example.oscar.hillfort.R
 import com.example.oscar.hillfort.views.BaseView
+import com.example.oscar.hillfort.views.VIEW
 import kotlinx.android.synthetic.main.activity_user_forgot_password.*
 
 class PasswordResetView : BaseView() {
@@ -30,5 +32,14 @@ class PasswordResetView : BaseView() {
                 }
             }).start()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            android.R.id.home -> {
+                navigateTo(VIEW.LOGIN)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

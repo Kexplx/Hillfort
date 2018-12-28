@@ -53,8 +53,8 @@ ext {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.cardview:cardview:$cardview_version"
     implementation "com.google.android.gms:play-services-maps:$play_services_maps_version"

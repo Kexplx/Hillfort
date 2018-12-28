@@ -18,7 +18,7 @@
     <string name="title_activity_site">Hillfort</string>
     <string name="title_activity_edit_location">Hillfort</string>
     <string name="title_activity_site_maps">Hillfort</string>
-    <string name="label_activity_settings">Hillfort - Settings</string>
+    <string name="label_activity_settings">Hillfort</string>
     <string name="visited_text">Visited:</string>
     <string name="lng_text">Lng:</string>
     <string name="lat_text">Lat:</string>
