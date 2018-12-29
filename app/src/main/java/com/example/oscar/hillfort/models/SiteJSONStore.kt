@@ -12,46 +12,43 @@ import java.util.*
 
 const val JSON_FILE = "sites.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()!!
-val listType = object : TypeToken<java.util.ArrayList<SiteModel>>() {}.type
+val listType = object : TypeToken<java.util.ArrayList<SiteModel>>() {}.type!!
 
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class SiteJSONStore : SiteStore, AnkoLogger {
+class SiteJSONStore(val context: Context) : SiteStore, AnkoLogger {
 
-    val context: Context
     var sites = mutableListOf<SiteModel>()
 
-    constructor (context: Context) {
-        this.context = context
+    init {
         if (exists(context, JSON_FILE)) {
             deserialize()
         }
     }
 
-    suspend override fun delete(site: SiteModel) {
+    override suspend fun delete(site: SiteModel) {
         sites.remove(site)
         serialize()
     }
 
-    suspend override fun findAll(): MutableList<SiteModel> {
+    override suspend fun findAll(): MutableList<SiteModel> {
         return sites
     }
 
-    suspend override fun findById(id: Long): SiteModel? {
-        var foundsite: SiteModel? = sites.find { it.id == id }
-        return foundsite
+    override suspend fun findById(id: Long): SiteModel? {
+        return sites.find { it.id == id }
     }
 
-    suspend override fun create(site: SiteModel) {
+    override suspend fun create(site: SiteModel) {
         site.id = generateRandomId()
         sites.add(site)
         serialize()
     }
 
-    suspend override fun update(site: SiteModel) {
-        var foundSite: SiteModel? = sites.find { it -> it.id == site.id }
+    override suspend fun update(site: SiteModel) {
+        val foundSite: SiteModel? = sites.find { it -> it.id == site.id }
         if (foundSite != null) {
             foundSite.title = site.title
             foundSite.description = site.description

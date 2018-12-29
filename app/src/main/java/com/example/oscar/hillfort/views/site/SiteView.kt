@@ -41,7 +41,7 @@ class SiteView : BaseView(), AnkoLogger {
         imgBtn2.setOnClickListener { showPictureDialog(presenter.IMAGE_2_REQUEST) }
         imgBtn3.setOnClickListener { showPictureDialog(presenter.IMAGE_3_REQUEST) }
 
-        mapView.onCreate(savedInstanceState);
+        mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
             map = it
             presenter.doConfigureMap(map)
@@ -49,7 +49,7 @@ class SiteView : BaseView(), AnkoLogger {
         }
     }
 
-    fun showPictureDialog(imageNumber: Int) {
+    private fun showPictureDialog(imageNumber: Int) {
         val pictureDialog = AlertDialog.Builder(this, R.style.AlertDialog)
         pictureDialog.setTitle("Select Action")
         val pictureDialogItems = arrayOf("Select photo from gallery", "Capture photo from camera")
@@ -74,16 +74,16 @@ class SiteView : BaseView(), AnkoLogger {
         ratingBar.rating = site.rating
 
         if (site.images[0] != "") {
-            Glide.with(this).load(site.images[0]).into(imgBtn0);
+            Glide.with(this).load(site.images[0]).into(imgBtn0)
         }
         if (site.images[1] != "") {
-            Glide.with(this).load(site.images[1]).into(imgBtn1);
+            Glide.with(this).load(site.images[1]).into(imgBtn1)
         }
         if (site.images[2] != "") {
-            Glide.with(this).load(site.images[2]).into(imgBtn2);
+            Glide.with(this).load(site.images[2]).into(imgBtn2)
         }
         if (site.images[3] != "") {
-            Glide.with(this).load(site.images[3]).into(imgBtn3);
+            Glide.with(this).load(site.images[3]).into(imgBtn3)
         }
 
         if (site.hasBeenVisited) {
@@ -93,10 +93,10 @@ class SiteView : BaseView(), AnkoLogger {
 
     override fun updateImage(code: Int, imagePath: String) {
         when (code) {
-            0 -> Glide.with(this).load(imagePath).into(imgBtn0);
-            1 -> Glide.with(this).load(imagePath).into(imgBtn1);
-            2 -> Glide.with(this).load(imagePath).into(imgBtn2);
-            3 -> Glide.with(this).load(imagePath).into(imgBtn3);
+            0 -> Glide.with(this).load(imagePath).into(imgBtn0)
+            1 -> Glide.with(this).load(imagePath).into(imgBtn1)
+            2 -> Glide.with(this).load(imagePath).into(imgBtn2)
+            3 -> Glide.with(this).load(imagePath).into(imgBtn3)
         }
     }
 

@@ -15,23 +15,23 @@ import com.example.oscar.hillfort.views.siteList.SiteListView
 import org.jetbrains.anko.AnkoLogger
 
 enum class VIEW {
-    LOCATION, SITE, MAPS, LIST, SETTINGS, LOGIN, RESETPASSWORD, NAVIGATION
+    LOCATION, SITE, LIST, SETTINGS, LOGIN, RESETPASSWORD, NAVIGATION
 }
 
-abstract class BaseView() : AppCompatActivity(), AnkoLogger {
+abstract class BaseView : AppCompatActivity(), AnkoLogger {
 
     var basePresenter: BasePresenter? = null
 
     fun navigateTo(view: VIEW, code: Int = 0, key: String = "", value: Parcelable? = null) {
         var intent = Intent(this, SiteListView::class.java)
-        when (view) {
-            VIEW.LOCATION -> intent = Intent(this, LocationView::class.java)
-            VIEW.SITE -> intent = Intent(this, SiteView::class.java)
-            VIEW.LIST -> intent = Intent(this, SiteListView::class.java)
-            VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
-            VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
-            VIEW.RESETPASSWORD -> intent = Intent(this, PasswordResetView::class.java)
-            VIEW.NAVIGATION -> intent = Intent(this, NavigationView::class.java)
+        intent = when (view) {
+            VIEW.LOCATION -> Intent(this, LocationView::class.java)
+            VIEW.SITE -> Intent(this, SiteView::class.java)
+            VIEW.LIST -> Intent(this, SiteListView::class.java)
+            VIEW.SETTINGS -> Intent(this, SettingsView::class.java)
+            VIEW.LOGIN -> Intent(this, LoginView::class.java)
+            VIEW.RESETPASSWORD -> Intent(this, PasswordResetView::class.java)
+            VIEW.NAVIGATION -> Intent(this, NavigationView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)

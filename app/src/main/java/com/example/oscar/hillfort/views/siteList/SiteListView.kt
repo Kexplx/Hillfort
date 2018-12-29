@@ -25,6 +25,8 @@ class SiteListView : BaseView(), SiteListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+        presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
+        title = "Sites of " + presenter.doGetUsername().split("@").first()
         setContentView(R.layout.activity_site_list)
         init(toolbarList, false)
 
@@ -44,7 +46,6 @@ class SiteListView : BaseView(), SiteListener {
             }
         })
 
-        presenter = initPresenter(SiteListPresenter(this)) as SiteListPresenter
         val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         presenter.loadSites()
@@ -66,7 +67,7 @@ class SiteListView : BaseView(), SiteListener {
         }
     }
 
-    fun showPictureDialog() {
+    private fun showPictureDialog() {
         val pictureDialog = AlertDialog.Builder(this, R.style.AlertDialog)
         pictureDialog.setTitle(getString(R.string.credits_AlertBox))
         pictureDialog.show()

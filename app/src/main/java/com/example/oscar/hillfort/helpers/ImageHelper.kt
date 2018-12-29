@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.oscar.hillfort.R
 import java.io.File
@@ -16,8 +15,6 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-var mCurrentPhotoPath: String = ""
-private var photoFile: File? = null
 val REQUEST_CAMERA_PERMISSIONS_REQUEST_CODE = 35
 
 fun showImagePicker(parent: Activity, id: Int) {

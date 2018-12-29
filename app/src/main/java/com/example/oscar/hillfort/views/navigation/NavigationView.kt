@@ -53,7 +53,7 @@ class NavigationView : BaseView(), GoogleMap.OnMarkerClickListener {
         txtHint.visibility = View.GONE
         currentTitle.text = site.title
         currentDescription.text = site.description
-        txtCurrrentDistance.text = distanceInMeters.toInt().toString()
+        txtCurrentDistance.text = distanceInMeters.toInt().toString()
         currentDistance.text = getString(R.string.distance_in_meters)
         Glide.with(this).load(site.images[0]).into(imageView)
     }

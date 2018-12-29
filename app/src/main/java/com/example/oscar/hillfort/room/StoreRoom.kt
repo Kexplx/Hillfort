@@ -17,7 +17,7 @@ class StoreRoom(val context: Context) : SiteStore {
         dao = database.siteDao()
     }
 
-    suspend override fun findAll(): List<SiteModel> {
+    override suspend fun findAll(): List<SiteModel> {
         val deferredSites = bg {
             dao.findAll()
         }
@@ -25,7 +25,7 @@ class StoreRoom(val context: Context) : SiteStore {
         return sites
     }
 
-    suspend override fun findById(id: Long): SiteModel? {
+    override suspend fun findById(id: Long): SiteModel? {
         val deferredSite = bg {
             dao.findById(id)
         }
@@ -33,19 +33,19 @@ class StoreRoom(val context: Context) : SiteStore {
         return sites
     }
 
-    suspend override fun create(site: SiteModel) {
+    override suspend fun create(site: SiteModel) {
         bg {
             dao.create(site)
         }
     }
 
-    suspend override fun update(site: SiteModel) {
+    override suspend fun update(site: SiteModel) {
         bg {
             dao.update(site)
         }
     }
 
-    suspend override fun delete(site: SiteModel) {
+    override suspend fun delete(site: SiteModel) {
         bg {
             dao.deleteSite(site)
         }

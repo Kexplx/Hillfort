@@ -26,7 +26,6 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
     var destinationSite: SiteModel? = null
 
     var firstZoomSet = false
-    private var defaultLocation = Location(52.245696, -7.139102, 15f)
     private var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     private val locationRequest = createDefaultLocationRequest()
     private var locationCallback = LocationCallback()
@@ -70,7 +69,7 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun distanceFromInMeters(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
+    private fun distanceFromInMeters(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
         val earthRadius = 6371000.0 //meters
         val dLat = Math.toRadians((lat2 - lat1))
         val dLng = Math.toRadians((lng2 - lng1))

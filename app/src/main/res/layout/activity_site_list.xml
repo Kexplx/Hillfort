@@ -64,7 +64,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:titleTextColor="@color/colorPrimary"
-                            app:title="@string/toolbar_titleText"
                             android:theme="@style/AppTheme"/>
                 </com.google.android.material.appbar.AppBarLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

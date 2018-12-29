@@ -73,7 +73,7 @@
             <TextView
                     android:layout_width="63dp"
                     android:layout_height="25dp"
-                    android:id="@+id/txtCurrrentDistance"
+                    android:id="@+id/txtCurrentDistance"
                     android:textColor="@color/green"
                     android:textSize="16sp"
                     android:layout_marginLeft="4dp"

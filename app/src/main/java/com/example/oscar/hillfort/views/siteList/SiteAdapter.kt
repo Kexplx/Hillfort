@@ -38,10 +38,10 @@ class SiteAdapter constructor(
         fun bind(site: SiteModel, listener: SiteListener) {
 
             itemView.btnShare.setOnClickListener {
-                var lineSeperator = System.getProperty("line.separator")
+                val lineSeperator = System.getProperty("line.separator")
                 val sharingIntent = Intent(android.content.Intent.ACTION_SEND)
                 sharingIntent.type = "text/plain"
-                var shareBody = site.title + " (" + site.lat + "/" + site.lng + ")" +
+                val shareBody = site.title + " (" + site.lat + "/" + site.lng + ")" +
                         lineSeperator + site.description + lineSeperator + site.notes
                 val shareSub = "Hillfort App: Site Description"
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub)

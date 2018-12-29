@@ -64,4 +64,5 @@
     <string name="forgot_password">Forgot Password?</string>
     <string name="click_on_a_site_s_marker_to_start_navigation">Click on a Site\'s Marker to Start Navigation</string>
     <string name="credits_AlertBox">Hillfort was created by Oscar Rosner in 2018</string>
+    <string name="shows_hillfort_logo">Shows Hillfort Logo</string>
 </resources>

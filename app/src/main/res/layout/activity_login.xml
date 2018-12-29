@@ -49,7 +49,7 @@
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="52dp"
                 android:drawableStart="@drawable/ic_person_black_24dp"
                 android:drawablePadding="10dp"
-                android:layout_marginStart="52dp" android:hint="@string/hint_email" android:text="oscar.rosner@web.de"
+                android:layout_marginStart="52dp" android:hint="@string/hint_email"
                 android:drawableLeft="@drawable/ic_person_black_24dp"/>
 
         <ProgressBar
@@ -76,7 +76,7 @@
                 android:inputType="textPassword"
                 app:layout_constraintTop_toBottomOf="@+id/email"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="52dp"
-                android:layout_marginStart="52dp" android:hint="@string/hint_password" android:text="aragorn7"
+                android:layout_marginStart="52dp" android:hint="@string/hint_password"
                 android:drawableLeft="@drawable/ic_lock_outline_black_24dp"/>
 
         <Button
@@ -107,7 +107,8 @@
                 android:layout_height="216dp" app:srcCompat="@drawable/brochure_color"
                 android:id="@+id/imageView2" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="64dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="60dp" android:layout_marginStart="60dp" android:visibility="visible"/>
+                android:layout_marginLeft="60dp" android:layout_marginStart="60dp" android:visibility="visible"
+                android:contentDescription="@string/shows_hillfort_logo"/>
         <TextView
                 android:text="@string/forgot_password"
                 android:layout_width="wrap_content"
@@ -117,5 +118,4 @@
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@+id/signUp" android:layout_marginTop="8dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
