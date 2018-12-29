@@ -173,7 +173,7 @@ class SitePresenter(view: SiteView) : BasePresenter(view) {
 
     override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         var path: File? = null
-        if (data.data == null) {
+        if (data.data == null && requestCode != LOCATION_REQUEST) {
             val bm = data.extras.get("data") as Bitmap
             path = createImageFile(view!!)
             saveBitmap(bm, path)

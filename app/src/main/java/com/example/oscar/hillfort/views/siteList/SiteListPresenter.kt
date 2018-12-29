@@ -9,6 +9,10 @@ import kotlinx.coroutines.experimental.async
 
 class SiteListPresenter(view: SiteListView) : BasePresenter(view) {
 
+    fun doGetUsername(): String {
+        return FirebaseAuth.getInstance().currentUser!!.email!!
+    }
+
     fun loadSites() {
         async(UI) {
             view?.showSites(app.sites.findAll())

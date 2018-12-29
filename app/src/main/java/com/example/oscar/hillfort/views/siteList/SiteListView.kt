@@ -1,5 +1,6 @@
 package com.example.oscar.hillfort.views.siteList
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -59,11 +60,16 @@ class SiteListView : BaseView(), SiteListener {
                 R.id.nav_settings -> presenter.doShowSettings()
                 R.id.nav_navigator -> presenter.doShowNavigator()
                 R.id.nav_logout -> presenter.doLogout()
-                R.id.nav_credits -> {
-                }
+                R.id.nav_credits -> showPictureDialog()
             }
             true
         }
+    }
+
+    fun showPictureDialog() {
+        val pictureDialog = AlertDialog.Builder(this, R.style.AlertDialog)
+        pictureDialog.setTitle(getString(R.string.credits_AlertBox))
+        pictureDialog.show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
