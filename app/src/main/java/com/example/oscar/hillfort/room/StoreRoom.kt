@@ -21,8 +21,7 @@ class StoreRoom(val context: Context) : SiteStore {
         val deferredSites = bg {
             dao.findAll()
         }
-        val sites = deferredSites.await()
-        return sites
+        return deferredSites.await()
     }
 
     override suspend fun findById(id: Long): SiteModel? {

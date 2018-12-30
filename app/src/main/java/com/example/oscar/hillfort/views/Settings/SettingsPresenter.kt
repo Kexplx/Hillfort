@@ -14,6 +14,10 @@ class SettingsPresenter(view: SettingsView) : BasePresenter(view) {
         return app.sites.findAll().count { x -> x.hasBeenVisited }
     }
 
+    suspend fun doGetNumberOfFavourites(): Int {
+        return app.sites.findAll().count { x -> x.favorite }
+    }
+
     fun doGetUsername(): String {
         return FirebaseAuth.getInstance().currentUser!!.email!!
     }

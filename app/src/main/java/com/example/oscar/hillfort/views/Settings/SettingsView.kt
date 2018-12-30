@@ -27,6 +27,7 @@ class SettingsView : BaseView() {
             txtUsername.text = presenter.doGetUsername()
             txtNumberOfSites.text = presenter.doGetTotalNumberOfSites().toString()
             txtNumberSitesVisited.text = presenter.doGetTotalNumberOfVisitedSites().toString()
+            txtNumberFavSites.text = presenter.doGetNumberOfFavourites().toString()
         }
 
         txtPassword.addTextChangedListener(object : TextWatcher {
