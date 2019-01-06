@@ -1,6 +1,7 @@
 package com.example.oscar.hillfort.views.navigation
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import com.example.oscar.hillfort.helpers.checkLocationPermissions
 import com.example.oscar.hillfort.helpers.createDefaultLocationRequest
 import com.example.oscar.hillfort.models.Location
@@ -13,11 +14,10 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
+
 
 class NavigationPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -92,7 +92,7 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
             map?.addMarker(options)?.tag = it
         }
 
-        val options = MarkerOptions().title("My Location").position(LatLng(location.lat, location.lng))
+        val options = MarkerOptions().title("My Location").position(LatLng(location.lat, location.lng)).icon(getMarkerIcon("#1276e4"))
         map?.addMarker(options)
 
         if (!firstZoomSet) {
@@ -105,5 +105,11 @@ class NavigationPresenter(view: BaseView) : BasePresenter(view) {
                 distanceFromInMeters(destinationSite!!.lat, destinationSite!!.lng, location.lat, location.lng)
             view?.updateCardWithDestination(destinationSite!!, distance)
         }
+    }
+
+    private fun getMarkerIcon(color: String): BitmapDescriptor {
+        val hsv = FloatArray(3)
+        Color.colorToHSV(Color.parseColor(color), hsv)
+        return BitmapDescriptorFactory.defaultMarker(hsv[0])
     }
 }
